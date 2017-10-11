@@ -28,7 +28,7 @@ class TransactionObj extends React.Component {
       this.state.y,
       {
         toValue: 1000,
-        duration: 100000
+        duration: 400000
       }
     )
       .start()
@@ -74,11 +74,6 @@ class TransactionObj extends React.Component {
         width = depth = height = 3;
         break;
     }
-    
-    
-
-
-    const width = depth = height = 7;
 
     return (
       <Animated.View style={{
@@ -88,28 +83,26 @@ class TransactionObj extends React.Component {
         ]
       }}>
         <Model
-          scale={1}
+          lit
           source={{
             obj: asset('Air_Balloon.obj'),
-            mtl: asset('Air_Balloon.mtl')
           }}
-          dimWidth={width}
-          dimDepth={depth}
-          dimHeight={height}
+          color={color}
           style={{
-            color: 'white',
             transform: [
               {
-                translate: [0, 0, 0]
+                translate: [0, 0, 0],
+                scale: width
               }]
           }}
         />
         <Box
+          lit
           dimWidth={width || 30}
           dimDepth={width || 30}
           dimHeight={width || 30}
           style={{
-            color: 'white'
+            color: color
           }}
         />
 
