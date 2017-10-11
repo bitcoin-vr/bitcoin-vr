@@ -4,7 +4,8 @@ import {
   Animated,
   View,
   Model,
-  asset
+  asset,
+  Text
 } from 'react-vr';
 
 class TransactionObj extends React.Component {
@@ -28,7 +29,7 @@ class TransactionObj extends React.Component {
       this.state.y,
       {
         toValue: 1000,
-        duration: 100000
+        duration: 400000
       }
     )
       .start()
@@ -37,8 +38,43 @@ class TransactionObj extends React.Component {
   render() {
     const { transaction } = this.props;
     const transactionVolume = transaction.trade.data.volume
+    // PURPLE : > 1000 BTC
+    // BLUE : 100 - 1000 BTC
+    // YELLOW : 50 - 100 BTC
+    // ORANGE : 10 - 50 BTC
+    // GREEN : 1 - 10 BTC
+    // RED : < 1 BTC
+    let width, depth, height, color;
 
-    const width = depth = height = 7;
+    switch (true) {
+      case (transactionVolume < 0.5):
+        width = depth = height = 3;
+        color = 'red'
+        break;
+      case (0.5 <= transactionVolume < 1):
+        width = depth = height = 10;
+        color = 'green'
+        break;
+      case (1 <= transactionVolume < 5):
+        width = depth = height = 20;
+        color = 'orange'
+        break;
+      case (5 <= transactionVolume < 10):
+        width = depth = height = 75;
+        color = 'yellow'
+        break;
+      case (10 <= transactionVolume < 100):
+        width = depth = height = 150;
+        color = 'blue'
+        break;
+      case (transactionVolume >= 100):
+        width = depth = height = 300;
+        color = 'purple'
+        break;
+      default:
+        width = depth = height = 3;
+        break;
+    }
 
     return (
       <Animated.View style={{
@@ -48,29 +84,33 @@ class TransactionObj extends React.Component {
         ]
       }}>
         <Model
-          scale={1}
+          lit
           source={{
-            obj: asset('Air_Balloon.obj')
+            obj: asset('Air_Balloon.obj'),
           }}
-          dimWidth={width}
-          dimDepth={depth}
-          dimHeight={height}
-          texture={asset('bfx-stacked.png')}
+          color={color}
           style={{
-            color: 'white',
             transform: [
-              {
-                translate: [0, 0, 0]
-              }]
-          }}  
-          />
-      <Box
+              { scale: width / 3 },
+              { translate: [0, 0, 0] }
+            ]
+          }}
+        >
+          <Text>
+            {transactionVolume}
+          </Text>
+        </Model>
+        <Box
+          lit
           dimWidth={width || 30}
-        dimDepth={width || 30}
-        dimHeight={width || 30}
-        style={{
-          color: 'white'
-        }}
+          dimDepth={width || 30}
+          dimHeight={width || 30}
+          style={{
+            transform: [
+              { translate: [0, -width / 2 + 1, 0] }
+            ],
+            color: color
+          }}
         />
 
 

@@ -42,7 +42,7 @@ export default function (state = initialState, action) {
     case ADD_NEW_TRANSACTION:
       console.log(action.newTransaction.trade.data.volume)
       
-      if (state.count > 5) {
+      if (state.count > 100) {
         return {
           count: state.count,
           transactions: [...state.transactions.slice(1), action.newTransaction]
