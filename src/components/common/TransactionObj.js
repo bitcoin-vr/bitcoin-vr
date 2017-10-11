@@ -37,6 +37,46 @@ class TransactionObj extends React.Component {
   render() {
     const { transaction } = this.props;
     const transactionVolume = transaction.trade.data.volume
+    // PURPLE : > 1000 BTC
+    // BLUE : 100 - 1000 BTC
+    // YELLOW : 50 - 100 BTC
+    // ORANGE : 10 - 50 BTC
+    // GREEN : 1 - 10 BTC
+    // RED : < 1 BTC
+    let width, depth, height, color;
+    
+    switch (true) {
+      case (transactionVolume < 1):
+        width = depth = height = 3;
+        color = 'red'
+        break;
+      case (1 <= transactionVolume < 10):
+        width = depth = height = 10;
+        color = 'green'
+        break;
+      case (10 <= transactionVolume < 50):
+        width = depth = height = 30;
+        color = 'orange'
+        break;
+      case (50 <= transactionVolume < 100):
+        width = depth = height = 75;
+        color = 'yellow'
+        break;
+      case (100 <= transactionVolume < 1000):
+        width = depth = height = 150;
+        color = 'blue'
+        break;
+      case (transactionVolume >= 1000):
+        width = depth = height = 300;
+        color = 'purple'
+        break;
+      default: 
+        width = depth = height = 3;
+        break;
+    }
+    
+    
+
 
     const width = depth = height = 7;
 
@@ -50,27 +90,27 @@ class TransactionObj extends React.Component {
         <Model
           scale={1}
           source={{
-            obj: asset('Air_Balloon.obj')
+            obj: asset('Air_Balloon.obj'),
+            mtl: asset('Air_Balloon.mtl')
           }}
           dimWidth={width}
           dimDepth={depth}
           dimHeight={height}
-          texture={asset('bfx-stacked.png')}
           style={{
             color: 'white',
             transform: [
               {
                 translate: [0, 0, 0]
               }]
-          }}  
-          />
-      <Box
+          }}
+        />
+        <Box
           dimWidth={width || 30}
-        dimDepth={width || 30}
-        dimHeight={width || 30}
-        style={{
-          color: 'white'
-        }}
+          dimDepth={width || 30}
+          dimHeight={width || 30}
+          style={{
+            color: 'white'
+          }}
         />
 
 
