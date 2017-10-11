@@ -19,7 +19,6 @@ import BlockstreamVR from './components/BlockstreamVR'
 
 export default class App extends React.Component {
   render() {
-    //const cube = { key, width, height, depth, x, y, z, upDown}
     return (
       <Provider store={store}>
          <BlockstreamVR /> 

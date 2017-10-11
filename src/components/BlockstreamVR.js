@@ -26,8 +26,6 @@ class BlockstreamVR extends Component {
   }
 
   componentDidMount () {
-    // TODO: datapoints below is just a scaffold to load mock data in
-    // TODO: we should move it into a redux thunk for datapoints
     this.props.loadTransactionsIntoState()
   }
 
