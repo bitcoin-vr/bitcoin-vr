@@ -4,7 +4,8 @@ import {
   Animated,
   View,
   Model,
-  asset
+  asset,
+  Text
 } from 'react-vr';
 
 class TransactionObj extends React.Component {
@@ -44,33 +45,33 @@ class TransactionObj extends React.Component {
     // GREEN : 1 - 10 BTC
     // RED : < 1 BTC
     let width, depth, height, color;
-    
+
     switch (true) {
-      case (transactionVolume < 1):
+      case (transactionVolume < 0.5):
         width = depth = height = 3;
         color = 'red'
         break;
-      case (1 <= transactionVolume < 10):
+      case (0.5 <= transactionVolume < 1):
         width = depth = height = 10;
         color = 'green'
         break;
-      case (10 <= transactionVolume < 50):
-        width = depth = height = 30;
+      case (1 <= transactionVolume < 5):
+        width = depth = height = 20;
         color = 'orange'
         break;
-      case (50 <= transactionVolume < 100):
+      case (5 <= transactionVolume < 10):
         width = depth = height = 75;
         color = 'yellow'
         break;
-      case (100 <= transactionVolume < 1000):
+      case (10 <= transactionVolume < 100):
         width = depth = height = 150;
         color = 'blue'
         break;
-      case (transactionVolume >= 1000):
+      case (transactionVolume >= 100):
         width = depth = height = 300;
         color = 'purple'
         break;
-      default: 
+      default:
         width = depth = height = 3;
         break;
     }
@@ -90,18 +91,24 @@ class TransactionObj extends React.Component {
           color={color}
           style={{
             transform: [
-              {
-                translate: [0, 0, 0],
-                scale: width
-              }]
+              { scale: width / 3 },
+              { translate: [0, 0, 0] }
+            ]
           }}
-        />
+        >
+          <Text>
+            {transactionVolume}
+          </Text>
+        </Model>
         <Box
           lit
           dimWidth={width || 30}
           dimDepth={width || 30}
           dimHeight={width || 30}
           style={{
+            transform: [
+              { translate: [0, -width / 2 + 1, 0] }
+            ],
             color: color
           }}
         />
