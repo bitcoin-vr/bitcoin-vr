@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "blockchain.info": "^2.10.1",
     "d3": "^4.11.0",
     "lodash": "^4.17.4",
     "ovrui": "~1.4.0",
