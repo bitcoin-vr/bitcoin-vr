@@ -8,6 +8,8 @@ import {
   Animated,
   Scene,
   Plane,
+  AmbientLight,
+  PointLight
 } from 'react-vr';
 import io from 'socket.io-client'
 // React-redux and store methods
@@ -42,6 +44,14 @@ class BlockstreamVR extends Component {
       }}>
       <View>
         <Pano source={asset('lake-large.jpg')}/>
+        <PointLight 
+          style={{
+            color: 'white',
+            transform: [
+              {translate: [0,0,0]}
+            ]
+          }}
+        />
         <View>
           {
             this.props.blockchainTransactions && this.props.blockchainTransactions.map( (transaction, index) => {
