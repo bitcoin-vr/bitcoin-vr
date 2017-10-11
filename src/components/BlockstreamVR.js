@@ -41,7 +41,7 @@ class BlockstreamVR extends Component {
         ]
       }}>
       <View>
-        <Pano source={asset('lake.jpg')}/>
+        <Pano source={asset('lake-large.jpg')}/>
         <View>
           {
             this.props.blockchainTransactions && this.props.blockchainTransactions.map( (transaction, index) => {
