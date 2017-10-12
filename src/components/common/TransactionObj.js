@@ -7,31 +7,37 @@ import {
   asset,
   Text
 } from 'react-vr';
+import { DataReadout } from './DataReadout'
 
 class TransactionObj extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       y: new Animated.Value(-10),
+      readoutVisible: false
     }
     this.animate = this.animate.bind(this);
+    this.toggleReadoutVisible = this.toggleReadoutVisible.bind(this);
   }
 
   componentDidMount() {
     this.animate();
-    const x = Math.floor(Math.random() * (200 - -200 + 1)) + -200;
-    const z = Math.floor(Math.random() * -180) + -40;
-    this.setState({ x, z });
   }
 
   animate() {
     Animated.timing(
       this.state.y,
       {
-        toValue: 300,
+        toValue: 100,
         duration: 100000
       }
     ).start()
+  }
+
+  toggleReadoutVisible() {
+    this.state.readoutVisible
+      ? this.setState({ readoutVisible: false })
+      : this.setState({ readoutVisible: true })
   }
 
   render() {
@@ -39,42 +45,79 @@ class TransactionObj extends React.Component {
     const base = 5;
 
     return (
-      <Animated.View style={{
-        transform: [
-          { translate: [x, 0, z] },
-          { translateY: this.state.y }
-        ]
-      }}>
-        <Model
-          lit
-          texture={asset('gold_texture.jpg')}
-          source={{
-            obj: asset('Air_Balloon.obj'),
-          }}
-          color={color}
-          style={{
-            transform: [
-              { scale: scale },
-              { translate: [0, 0, 0] }
-            ]
-          }}
-        >
-          <Text>
-            {volume}
-          </Text>
-        </Model>
+      <Animated.View
+        onEnter={() => this.toggleReadoutVisible()}
+        onExit={() => this.toggleReadoutVisible()}
+        style={{
+          transform: [
+            { translate: [x, 0, z] },
+            { translateY: this.state.y }
+          ]
+        }}>
+        {
+          scale >= 5
+            ? (
+              <Model
+                lit
+                texture={asset('gold_texture.jpg')}
+                source={{
+                  obj: asset('Low-Poly_airship.obj'),
+                }}
+                color={color}
+                style={{
+                  transform: [
+                    { scale: 0.1 },
+                    { translate: [0, 100, 0] }
+                  ]
+                }}
+              >
+                <Text>
+                  {volume}
+                </Text>
+              </Model>
+            )
+            : (
+              <Model
+                lit
+                texture={asset('gold_texture.jpg')}
+                source={{
+                  obj: asset('Air_Balloon.obj'),
+                }}
+                color={color}
+                style={{
+                  transform: [
+                    { scale: scale },
+                    { translate: [0, 0, 0] }
+                  ]
+                }}
+              >
+                <Text>
+                  {volume}
+                </Text>
+              </Model>
+            )
+        }
+
         <Box
           lit
-          dimWidth={base*scale || 30}
-          dimDepth={base*scale || 30}
-          dimHeight={base*scale || 30}
+          dimWidth={base * scale || 30}
+          dimDepth={base * scale || 30}
+          dimHeight={base * scale || 30}
           style={{
             transform: [
-              { translate: [0, -base*scale / 2 + 1, 0] }
+              { translate: [0, -base * scale / 2 + 1, 0] }
             ],
             color: color
           }}
         />
+        {
+          this.state.readoutVisible && volume && <DataReadout readout={{
+            x,
+            y: this.state.y,
+            z,
+            orig: this.props.transaction
+          }} />
+        }
       </Animated.View>)
   }
 }
