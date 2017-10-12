@@ -112,6 +112,7 @@ class TransactionObj extends React.Component {
         />
         {
           this.state.readoutVisible && volume && <DataReadout readout={{
+            boxSize: base * scale || 30,
             x,
             y: this.state.y,
             z,
