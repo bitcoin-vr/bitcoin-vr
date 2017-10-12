@@ -7,113 +7,117 @@ import {
   asset,
   Text
 } from 'react-vr';
+import { DataReadout } from './DataReadout'
 
 class TransactionObj extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       y: new Animated.Value(-10),
+      readoutVisible: false
     }
     this.animate = this.animate.bind(this);
+    this.toggleReadoutVisible = this.toggleReadoutVisible.bind(this);
   }
 
   componentDidMount() {
     this.animate();
-    const x = Math.floor(Math.random() * (200 - -200 + 1)) + -200;
-    const z = Math.floor(Math.random() * (200 - -200 + 1)) + -200;
-    this.setState({ x, z });
   }
 
   animate() {
     Animated.timing(
       this.state.y,
       {
-        toValue: 1000,
-        duration: 400000
+        toValue: 100,
+        duration: 100000
       }
-    )
-      .start()
+    ).start()
+  }
+
+  toggleReadoutVisible() {
+    this.state.readoutVisible
+      ? this.setState({ readoutVisible: false })
+      : this.setState({ readoutVisible: true })
   }
 
   render() {
-    const { transaction } = this.props;
-    const transactionVolume = transaction.trade.data.volume
-    // PURPLE : > 1000 BTC
-    // BLUE : 100 - 1000 BTC
-    // YELLOW : 50 - 100 BTC
-    // ORANGE : 10 - 50 BTC
-    // GREEN : 1 - 10 BTC
-    // RED : < 1 BTC
-    let width, depth, height, color;
-
-    switch (true) {
-      case (transactionVolume < 0.5):
-        width = depth = height = 3;
-        color = 'red'
-        break;
-      case (0.5 <= transactionVolume < 1):
-        width = depth = height = 10;
-        color = 'green'
-        break;
-      case (1 <= transactionVolume < 5):
-        width = depth = height = 20;
-        color = 'orange'
-        break;
-      case (5 <= transactionVolume < 10):
-        width = depth = height = 75;
-        color = 'yellow'
-        break;
-      case (10 <= transactionVolume < 100):
-        width = depth = height = 150;
-        color = 'blue'
-        break;
-      case (transactionVolume >= 100):
-        width = depth = height = 300;
-        color = 'purple'
-        break;
-      default:
-        width = depth = height = 3;
-        break;
-    }
+    const { x, z, volume, color, scale } = this.props.transaction;
+    const base = 5;
 
     return (
-      <Animated.View style={{
-        transform: [
-          { translate: [this.state.x, 0, this.state.z] },
-          { translateY: this.state.y }
-        ]
-      }}>
-        <Model
-          lit
-          source={{
-            obj: asset('Air_Balloon.obj'),
-          }}
-          color={color}
-          style={{
-            transform: [
-              { scale: width / 3 },
-              { translate: [0, 0, 0] }
-            ]
-          }}
-        >
-          <Text>
-            {transactionVolume}
-          </Text>
-        </Model>
+      <Animated.View
+        onEnter={() => this.toggleReadoutVisible()}
+        onExit={() => this.toggleReadoutVisible()}
+        style={{
+          transform: [
+            { translate: [x, 0, z] },
+            { translateY: this.state.y }
+          ]
+        }}>
+        {
+          scale >= 5
+            ? (
+              <Model
+                lit
+                texture={asset('gold_texture.jpg')}
+                source={{
+                  obj: asset('Low-Poly_airship.obj'),
+                }}
+                color={color}
+                style={{
+                  transform: [
+                    { scale: 0.1 },
+                    { translate: [0, 100, 0] }
+                  ]
+                }}
+              >
+                <Text>
+                  {volume}
+                </Text>
+              </Model>
+            )
+            : (
+              <Model
+                lit
+                texture={asset('gold_texture.jpg')}
+                source={{
+                  obj: asset('Air_Balloon.obj'),
+                }}
+                color={color}
+                style={{
+                  transform: [
+                    { scale: scale },
+                    { translate: [0, 0, 0] }
+                  ]
+                }}
+              >
+                <Text>
+                  {volume}
+                </Text>
+              </Model>
+            )
+        }
+
         <Box
           lit
-          dimWidth={width || 30}
-          dimDepth={width || 30}
-          dimHeight={width || 30}
+          dimWidth={base * scale || 30}
+          dimDepth={base * scale || 30}
+          dimHeight={base * scale || 30}
           style={{
             transform: [
-              { translate: [0, -width / 2 + 1, 0] }
+              { translate: [0, -base * scale / 2 + 1, 0] }
             ],
             color: color
           }}
         />
-
-
+        {
+          this.state.readoutVisible && volume && <DataReadout readout={{
+            x,
+            y: this.state.y,
+            z,
+            orig: this.props.transaction
+          }} />
+        }
       </Animated.View>)
   }
 }
