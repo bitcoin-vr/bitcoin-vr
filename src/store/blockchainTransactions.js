@@ -24,17 +24,17 @@ export const addNewTransaction = (newTransaction) => ({
  * THUNK CREATORS
  */
 export function loadTransactionsIntoState() {
-  return function thunk (dispatch) {
-    let socket = io.connect('http://socket.coincap.io', {jsonp: false})
+  return function thunk(dispatch) {
+    let socket = io.connect('http://socket.coincap.io', { jsonp: false })
     socket.on('trades', (tradeMsg) => {
       if (tradeMsg.coin == 'BTC') dispatch(addNewTransaction(tradeMsg.trade.data))
     })
   }
 }
 
- /**
- * REDUCER
- */
+/**
+* REDUCER
+*/
 export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_NEW_TRANSACTION:
@@ -43,29 +43,36 @@ export default function (state = initialState, action) {
 
       // Positioning of new transaction
       let randomX = Math.floor(Math.random() * (160)) + 40;
-      action.newTransaction.x = Math.random() > 0.5 ? randomX : -randomX   
+      action.newTransaction.x = Math.random() > 0.5 ? randomX : -randomX
       let randomZ = Math.floor(Math.random() * (160)) + 40;
       action.newTransaction.z = Math.random() > 0.5 ? randomZ : -randomZ
-      
+
       // Generate key
       action.newTransaction.key = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 0)) + 0;
 
       // Scale of the transaction
       switch (true) {
+        // Hot Air Balloon
         case (transactionSize < 1):
-          action.newTransaction.scale = 1;
+          action.newTransaction.scale = 0.4 + (0.6 * transactionSize); // Gives it a minimum value
           action.newTransaction.color = 'red'
+          action.newTransaction.model = 'balloon'
           break;
+        // Zeppelin
         case (1 <= transactionSize < 10):
-         action.newTransaction.scale = 5;
+          action.newTransaction.scale = 0.6 + (0.4 * transactionSize / 10);
           action.newTransaction.color = 'orange'
+          action.newTransaction.model = 'zeppelin'
           break;
-        case (10 <= transactionSize < 100):
-        action.newTransaction.scale = 20;
-        action.newTransaction.color = 'blue'
+        case (10 <= transactionSize):
+          action.newTransaction.scale = 2;
+          action.newTransaction.color = 'blue'
+          action.newTransaction.model = 'zeppelin'
           break;
         default:
-          width = depth = height = 0.5;
+          action.newTransaction.scale = 0.2 + (0.8 * transactionSize); // Gives it a minimum value
+          action.newTransaction.color = 'red'
+          action.newTransaction.model = 'balloon'
           break;
       }
 
@@ -79,7 +86,7 @@ export default function (state = initialState, action) {
         return {
           count: state.count += 1,
           transactions: [...state.transactions, action.newTransaction]
-        }  
+        }
       }
 
     default:
