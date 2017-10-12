@@ -42,13 +42,14 @@ export default function (state = initialState, action) {
       const transactionSize = action.newTransaction.volume
 
       // Positioning of new transaction
+      // TODO: Refactor into ring?
       action.newTransaction.x = Math.floor(Math.random() * (200 - -200 + 1)) + -200;
       action.newTransaction.z = Math.floor(Math.random() * -180) + -40;
       
       // Scale of the transaction
       switch (true) {
         case (transactionSize < 1):
-          action.newTransaction.scale = 0.5;
+          action.newTransaction.scale = 1;
           action.newTransaction.color = 'red'
           break;
         case (1 <= transactionSize < 10):

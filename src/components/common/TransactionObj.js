@@ -36,7 +36,7 @@ class TransactionObj extends React.Component {
 
   render() {
     const { x, z, volume, color, scale } = this.props.transaction;
-    const base = 20;
+    const base = 5;
 
     return (
       <Animated.View style={{
