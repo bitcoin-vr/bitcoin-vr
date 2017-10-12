@@ -13,23 +13,20 @@ class DataReadout extends React.Component {
 
   render() {
     const { vrX, vrY, vrZ, orig } = this.props.readout;
-    orig.dontPrint = 'dontPrint'; // bug: does not print the last property of orig
-    //quickFix: append a dontPrint property
-    let keys = Object.keys(orig);
+    const { price, volume, exchange_id, market_id } = orig;
 
     return (
       <View
         billboarding={'on'}
-        
+
       >
         <Text
           style={{
             backgroundColor: '#00000080',
-            fontSize: 1,
+            fontSize: 0.3,
             color: 'white',
             position: 'absolute',
             width: 10,
-            height: 40,
             transform: [
               { translate: [-10, -10, 10] },
               { scale: 4 }
@@ -37,9 +34,10 @@ class DataReadout extends React.Component {
           }}
         >
           {
-            keys.map(key => {
-              return `${key}: ${orig[key]}` + '\n'
-            })
+            `BTC: ${volume.toFixed(2)}\n
+            USD Value: ${volume * price.toFixed(2)}\n
+            Exchange: ${market_id}\n
+            `
           }
         </Text>
       </View>

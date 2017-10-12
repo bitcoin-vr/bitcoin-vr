@@ -44,7 +44,7 @@ export default function (state = initialState, action) {
       // Positioning of new transaction
       // TODO: Refactor into ring?
       action.newTransaction.x = Math.floor(Math.random() * (200 - -200 + 1)) + -200;
-      action.newTransaction.z = Math.floor(Math.random() * -180) + -40;
+      action.newTransaction.z = Math.floor(Math.random() * (200 - -200 + 1)) + -200;
       
       // Scale of the transaction
       switch (true) {
