@@ -34,7 +34,6 @@ class BlockstreamVR extends Component {
   }
 
   render() {
-    console.log(this.props.blockchainTransactions)
     return (
       <Scene style= {{
         transform: [
@@ -57,7 +56,7 @@ class BlockstreamVR extends Component {
             this.props.blockchainTransactions && this.props.blockchainTransactions.map( (transaction, index) => {
               return (
                 <TransactionObj 
-                  key={transaction.trade.data.timestamp_ms} 
+                  key={transaction.timestamp_ms} 
                   transaction={{...transaction}} 
                 />
               );
@@ -65,10 +64,13 @@ class BlockstreamVR extends Component {
           } 
         </View>
         <Plane
-          dimWidth={10}
+          dimWidth={30}
           dimHeight={10}
           style={{
-            transform: [{translate: [5, 5, -40]}],
+            transform: [
+              {translate: [5, -20, -30]},
+              {rotateX: -40}
+            ],
             color: 'green'
           }}
         />
