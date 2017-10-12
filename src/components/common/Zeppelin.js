@@ -79,7 +79,7 @@ render() {
           color={color}
           style={{
             transform: [
-              { scale: 0.1 },
+              { scale: 0.08 },
               { translate: [0, 100, 0] }
             ]
           }}
@@ -90,7 +90,6 @@ render() {
         </Model>
 
       }
-
       <Box
         lit
         dimWidth={base * scale || 30}
@@ -98,7 +97,8 @@ render() {
         dimHeight={base * scale || 30}
         style={{
           transform: [
-            { translate: [0, -base * scale / 2 + 1, 0] }
+            { translate: [0, -base * scale / 2 + 1, 0] },
+            { rotateY: this.state.rotation}
           ],
           color: color
         }}
