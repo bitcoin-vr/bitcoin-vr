@@ -57,7 +57,7 @@ class BlockstreamVR extends Component {
             && this.props.blockchainTransactions.map( (transaction, index) => {
               return (
                 <TransactionObj 
-                  key={transaction.timestamp_ms} 
+                  key={transaction.key} 
                   transaction={{...transaction}} 
                 />
               );

@@ -42,10 +42,14 @@ export default function (state = initialState, action) {
       const transactionSize = action.newTransaction.volume
 
       // Positioning of new transaction
-      // TODO: Refactor into ring?
-      action.newTransaction.x = Math.floor(Math.random() * (200 - -200 + 1)) + -200;
-      action.newTransaction.z = Math.floor(Math.random() * (200 - -200 + 1)) + -200;
+      let randomX = Math.floor(Math.random() * (160)) + 40;
+      action.newTransaction.x = Math.random() > 0.5 ? randomX : -randomX   
+      let randomZ = Math.floor(Math.random() * (160)) + 40;
+      action.newTransaction.z = Math.random() > 0.5 ? randomZ : -randomZ
       
+      // Generate key
+      action.newTransaction.key = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 0)) + 0;
+
       // Scale of the transaction
       switch (true) {
         case (transactionSize < 1):
