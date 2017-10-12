@@ -46,6 +46,9 @@ export default function (state = initialState, action) {
       action.newTransaction.x = Math.floor(Math.random() * (200 - -200 + 1)) + -200;
       action.newTransaction.z = Math.floor(Math.random() * (200 - -200 + 1)) + -200;
       
+      // Generate key
+      action.newTransaction.key = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 0)) + 0;
+
       // Scale of the transaction
       switch (true) {
         case (transactionSize < 1):
