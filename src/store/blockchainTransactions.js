@@ -42,9 +42,9 @@ export default function (state = initialState, action) {
       const transactionSize = action.newTransaction.volume
 
       // Positioning of new transaction
-      let randomX = Math.floor(Math.random() * (160)) + 40;
+      let randomX = Math.floor(Math.random() * (60)) + 40;
       action.newTransaction.x = Math.random() > 0.5 ? randomX : -randomX
-      let randomZ = Math.floor(Math.random() * (160)) + 40;
+      let randomZ = Math.floor(Math.random() * (60)) + 40;
       action.newTransaction.z = Math.random() > 0.5 ? randomZ : -randomZ
 
       // Generate key
