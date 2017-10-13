@@ -72,7 +72,7 @@ render() {
       {
         <Model
           lit
-          texture={asset('gold_texture.jpg')}
+          // texture={asset('gold_texture.jpg')}
           source={{
             obj: asset('Low-Poly_airship.obj'),
           }}

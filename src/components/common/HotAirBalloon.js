@@ -57,7 +57,7 @@ class HotAirBalloon extends React.Component {
         {
           <Model
             lit
-            texture={asset('gold_texture.jpg')}
+            // texture={asset('gold_texture.jpg')}
             source={{
               obj: asset('Air_Balloon.obj'),
             }}
