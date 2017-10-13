@@ -17,6 +17,7 @@
     "lodash": "^4.17.4",
     "ovrui": "~1.4.0",
     "react": "~15.4.1",
+    "react-addons-perf": "^15.4.2",
     "react-native": "~0.42.0",
     "react-native-axios": "^0.17.1",
     "react-native-router-flux": "^4.0.0-beta.21",
