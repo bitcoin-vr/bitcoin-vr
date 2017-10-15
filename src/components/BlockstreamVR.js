@@ -64,17 +64,6 @@ class BlockstreamVR extends Component {
             })
           } 
         </View>
-        <Plane
-          dimWidth={30}
-          dimHeight={10}
-          style={{
-            transform: [
-              {translate: [5, -20, -30]},
-              {rotateX: -40}
-            ],
-            color: 'green'
-          }}
-        />
       </View>
     </Scene>
   )
