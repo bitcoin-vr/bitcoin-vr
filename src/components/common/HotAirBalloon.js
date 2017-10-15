@@ -28,8 +28,8 @@ class HotAirBalloon extends React.Component {
     Animated.timing(
       this.state.y,
       {
-        toValue: 100,
-        duration: 100000
+        toValue: 1000,
+        duration: 200000
       }
     ).start()
   }

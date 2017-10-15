@@ -34,7 +34,7 @@ class DataReadout extends React.Component {
           style={styles.transactionVolume}
         >
           {
-            `${volume.toFixed(1)}\n`
+            `${volume.toFixed(3)}\n`
           }
         </Text>
         <Text

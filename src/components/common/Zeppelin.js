@@ -32,7 +32,7 @@ class Zeppelin extends React.Component {
       this.state.y,
       {
         toValue: 100,
-        duration: 100000
+        duration: 800000
       }
     ).start()
   }
