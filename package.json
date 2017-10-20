@@ -7,9 +7,7 @@
     "bundle": "node node_modules/react-vr/scripts/bundle.js",
     "open": "node -e \"require('xopen')('http://localhost:8081/vr/')\"",
     "devtools": "react-devtools",
-    "test": "jest",
-    "loader": "babel ./src/Converter.js | node",
-    "robinTest": "node ./src/loader/Converter.js"
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.16.2",
