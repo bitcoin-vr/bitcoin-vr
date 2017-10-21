@@ -12,6 +12,7 @@ import {
 
 // React-redux and store methods
 import { connect } from 'react-redux'
+import io from 'socket.io-client';
 import { 
   loadTransactionsIntoState 
 } from '../store';
