@@ -17,7 +17,10 @@ class HoverBox extends React.Component {
   }
 
   render() {
-    const { vrX, vrY, vrZ, orig, boxSize } = this.props.readout;
+    const { 
+      vrX, vrY, vrZ, 
+      orig, 
+      boxSize } = this.props.readout;
     const { price, volume, exchange_id, market_id } = orig;
 
     // Calculate USD value

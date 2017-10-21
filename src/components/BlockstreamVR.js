@@ -18,6 +18,7 @@ import {
 } from '../store';
 // Common components
 import { TransactionObj } from './common';
+import InfoPanel from './common/InfoPanel.js'
 
 class BlockstreamVR extends Component {
   constructor (props) {
@@ -46,6 +47,7 @@ class BlockstreamVR extends Component {
             ]
           }}
         />
+        <InfoPanel />
         <View>
           {
             this.props.blockchainTransactions 
@@ -80,4 +82,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(BlockstreamVR)
+export default connect(mapStateToProps, mapDispatchToProps)(BlockstreamVR);
