@@ -30,9 +30,7 @@ export function loadTransactionsIntoState() {
   return function thunk(dispatch) {
     let socket = io.connect('http://socket.coincap.io', { jsonp: false })
     socket.on('trades', (tradeMsg) => {
-      console.log("New Transaction", tradeMsg);
       if (tradeMsg.coin == 'BTC') dispatch(addNewTransaction(tradeMsg.trade.data))
-      // dispatch(addNewTransaction(tradeMsg.trade.data))
     })
   }
 }
@@ -43,7 +41,7 @@ export function loadTransactionsIntoState() {
 export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_NEW_TRANSACTION:
-      console.log(action.newTransaction)
+      //console.log(action.newTransaction)
       const transactionSize = +action.newTransaction.volume
       const transactionUSD = +(+action.newTransaction.price * +transactionSize).toFixed(2);
 
@@ -58,8 +56,6 @@ export default function (state = initialState, action) {
 
       // Generate key
       action.newTransaction.key = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 0)) + 0;
-
-
 
       // Scale of the transaction
       switch (true) {

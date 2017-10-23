@@ -19,12 +19,6 @@ const _panelWidth = 60;
 class InfoPanel extends React.Component {
   constructor(props) {
     super(props);
-
-
-  }
-
-  selectCurrency() {
-    // select which currency you'd like to render
   }
 
   render() {
@@ -77,6 +71,7 @@ class InfoPanel extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  // for future buttons to change current cryptocurrency
   currencyButton: {
     margin: 0.02,
     padding: 0.02,
@@ -123,18 +118,6 @@ const styles = StyleSheet.create({
   container_footer: {
     marginRight: 0.05,
   }
-})
+});
 
-const mapStateToProps = state => {
-  return {
-
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(InfoPanel);
+export { InfoPanel };

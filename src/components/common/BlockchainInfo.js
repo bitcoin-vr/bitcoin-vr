@@ -21,7 +21,6 @@ class BlockchainInfo extends React.Component {
 
   render() {
     const curCurrency = 'BTC'
-    //const curSymbol = 'B'
     const { largest, total, last } = this.props;
     console.log(this.props.largest);
 

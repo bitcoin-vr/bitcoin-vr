@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import {
   asset,
   Pano,
-  Text,
   View,
   Scene,
-  Plane,
-  //AmbientLight,
   PointLight
 } from 'react-vr';
 
@@ -18,7 +15,7 @@ import {
 } from '../store';
 // Common components
 import { TransactionObj } from './common';
-import InfoPanel from './common/InfoPanel.js'
+import { InfoPanel } from './common/InfoPanel.js'
 
 class BlockstreamVR extends Component {
   constructor (props) {
@@ -26,15 +23,14 @@ class BlockstreamVR extends Component {
   }
 
   componentDidMount () {
-    this.props.loadTransactionsIntoState()
+    this.props.loadTransactionsIntoState();
   }
 
   render() {
     return (
       <Scene style= {{
         transform: [
-          {translate: [0, 0, 0]},
-          //{rotateZ: 45}
+          {translate: [0, 0, 0]}
         ]
       }}>
       <View>
@@ -48,9 +44,7 @@ class BlockstreamVR extends Component {
           }}
         />
         <InfoPanel />
-        <View style={{
-          position: 'absolute'
-        }}>
+        <View style={{ position: 'absolute' }}>
           {
             this.props.blockchainTransactions 
             && this.props.blockchainTransactions.map( (transaction, index) => {
@@ -82,6 +76,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlockstreamVR);
