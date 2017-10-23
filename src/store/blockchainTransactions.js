@@ -30,7 +30,7 @@ export function loadTransactionsIntoState() {
   return function thunk(dispatch) {
     let socket = io.connect('http://socket.coincap.io', { jsonp: false })
     socket.on('trades', (tradeMsg) => {
-      console.log("New Transaction", tradeMsg.trade.data);
+      console.log("New Transaction", tradeMsg);
       if (tradeMsg.coin == 'BTC') dispatch(addNewTransaction(tradeMsg.trade.data))
       // dispatch(addNewTransaction(tradeMsg.trade.data))
     })

@@ -28,101 +28,49 @@ class InfoPanel extends React.Component {
   }
 
   render() {
-    // const { vrX, vrY, vrZ, orig, boxSize } = this.props.readout;
-    // const { price, volume, exchange_id, market_id } = orig;
-
-    // let usd = (volume * price);
-    // usd = usd.toFixed(2);
 
     return (
-      <View style={{
-        position: 'absolute',
-        transform: [
-          { translate: [-1.25, -0.5, -2] },
-          { rotateX: -25 }
-        ],
-        borderWidth: 0.01,
-        borderColor: '#FFFFFF80',
-        backgroundColor: '#000000CC',
+      <View style={styles.container}>
+        <View style={styles.container_header}>
 
-      }}>
-
-        <View style={{
-          width: 2.5,
-          flexDirection: 'row',
-        }}>
-          <View style={{
-            width: 1,
-            paddingLeft: 0.1,
-            marginBottom: -0.05
-          }}>
-            <Text style={{
-              textAlign: 'left',
-              fontSize: .15,
-            }}>
+          <View style={styles.container_title}>
+            <Text style={styles.text_title}>
               Blockchain-VR
             </Text>
           </View>
 
-          <View style={{
-            alignItems: 'flex-end',
-            width: 1.4,
-            marginBottom: -0.05
-          }}>
-            <View style={{
-              marginTop: 0.01,
-              marginBottom: -0.03
-            }}>
-              <Text style={{
-                textAlign: 'right',
-                fontSize: 0.08,
-              }}>
+          <View style={styles.container_key}>
+            <View style={styles.container_keyItem}>
+              <Text style={styles.text_smallRightAlign}>
                 {`Balloon < 1 BTC`}
               </Text>
             </View>
-            <View style={{
-              marginBottom: 0.05
-            }}>
-              <Text style={{
-                textAlign: 'right',
-                fontSize: 0.08,
-              }}>
+            <View style={styles.container_keyItemBottom}>
+              <Text style={styles.text_smallRightAlign}>
                 {`Zeppelin >= 1 BTC`}
               </Text>
             </View>
           </View>
+
         </View>
 
-        <View style={{
-          alignItems: 'center',
-        }}>
+        <View style={{ alignItems: 'center' }}>
           <BlockchainInfo />
         </View>
 
-        <View style={{
-          marginRight: 0.05,
-        }}>
-          <View style={{
-            marginBottom: -0.03
-          }}>
-            <Text style={{
-              textAlign: 'right',
-              fontSize: 0.08,
-            }}>
+        <View style={styles.container_footer}>
+          <View style={styles.container_keyItem}>
+            <Text style={styles.text_smallRightAlign}>
               {`Created by Daniel Ong, Robin Wilson, Jing Jia`}
             </Text>
           </View>
-          <View style={{
-            marginBottom: 0.05
-          }}>
-            <Text style={{
-              textAlign: 'right',
-              fontSize: 0.08,
-            }}>
+          <View style={styles.container_keyItemBottom}>
+            <Text style={styles.text_smallRightAlign}>
               {`github.com/data-VR/blockchain-vr`}
             </Text>
           </View>
         </View>
+
       </View>
     )
   }
@@ -135,39 +83,45 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
   },
   container: {
-    backgroundColor: '#00000080',
     position: 'absolute',
-    height: _panelHeight,
-    width: _panelWidth,
-    flexDirection: 'column',
     transform: [
-      { translate: [-_panelWidth / 2, -_panelHeight / 10, 0] },
-      { scale: 4 }
+      { translate: [-1.25, -0.5, -2] },
+      { rotateX: -25 }
     ],
-    borderRadius: 1,
-    justifyContent: 'flex-start',
+    borderWidth: 0.01,
+    borderColor: '#858585',
+    backgroundColor: '#000000CC',
   },
-  transactionVolume: {
-    flex: 2,
-    fontSize: 10,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center',
-    fontWeight: '400'
+  container_header: {
+    width: 2.5,
+    flexDirection: 'row',
   },
-  transactionValue: {
-    flex: 1,
-    fontSize: 4,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center'
+  container_title: {
+    width: 1,
+    paddingLeft: 0.1,
+    marginBottom: -0.05
   },
-  transactionExchange: {
-    flex: 1,
-    fontSize: 4,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center'
+  text_title: {
+    textAlign: 'left',
+    fontSize: .15,
+  },
+  container_key: {
+    width: 1.4,
+    marginBottom: -0.05
+  },
+  container_keyItem: {
+    marginTop: 0.01,
+    marginBottom: -0.03
+  },
+  container_keyItemBottom: {
+    marginBottom: 0.05
+  },
+  text_smallRightAlign: {
+    textAlign: 'right',
+    fontSize: 0.08,
+  },
+  container_footer: {
+    marginRight: 0.05,
   }
 })
 

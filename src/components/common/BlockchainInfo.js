@@ -26,38 +26,21 @@ class BlockchainInfo extends React.Component {
     console.log(this.props.largest);
 
     return (
-      <View style={{
-        flexDirection: 'row',
-        alignItems: 'stretch',
-      }}>
-        <View style={{
-          width: 0.4,
-          flexDirection: 'column',
-          padding: 0,
-          paddingRight: 0.05,
-          
-        }}>
-          <Text style={{textAlign: 'right', padding: 0, marginBottom: -0.028}}>Total</Text>
-          <Text style={{textAlign: 'right', padding: 0, marginBottom: -0.028 }}>Largest</Text>
-          <Text style={{textAlign: 'right', padding: 0, marginTop: -0.01}}>Newest</Text>
+      <View style={styles.container}>
+        <View style={styles.container_totalLargestNewest}>
+          <Text style={styles.listItem}>Total</Text>
+          <Text style={styles.listItem}>Largest</Text>
+          <Text style={styles.listItemBottom}>Newest</Text>
         </View>
 
-        <View style={{
-          width: .8,
-        }}>
-          <Text style={{
-            textAlign: 'left',
-          }}>
+        <View style={styles.container_numberValues}>
+          <Text style={styles.text_numberValues}>
             {`${curCurrency} ${total[0].toFixed(3)}\n ${curCurrency} ${largest[0].toFixed(3)}\n ${curCurrency} ${last[0].toFixed(3)}`}
           </Text>
         </View>
 
-        <View style={{
-          width: .8,
-        }}>
-          <Text style={{
-            textAlign: 'left',
-          }}>
+        <View style={styles.container_numberValues}>
+          <Text style={styles.text_numberValues}>
             {`$ ${total[1].toFixed(2)}\n $ ${largest[1].toFixed(2)}\n $ ${last[1].toFixed(2)}`}
           </Text>
         </View>
@@ -67,45 +50,32 @@ class BlockchainInfo extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  currencyButton: {
-    margin: 0.02,
-    padding: 0.02,
-    backgroundColor: 'green',
-  },
   container: {
-    backgroundColor: '#00000080',
-    position: 'absolute',
-    height: _panelHeight,
-    width: _panelWidth,
-    flexDirection: 'column',
-    transform: [
-      { translate: [-_panelWidth / 2, -_panelHeight / 10, 0] },
-      { scale: 4 }
-    ],
-    borderRadius: 1,
-    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    margin: 0.02
   },
-  transactionVolume: {
-    flex: 2,
-    fontSize: 10,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center',
-    fontWeight: '400'
+  container_totalLargestNewest: {
+      width: 0.4,
+      flexDirection: 'column',
+      padding: 0,
+      paddingRight: 0.05
   },
-  transactionValue: {
-    flex: 1,
-    fontSize: 4,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center'
+  listItem: {
+    textAlign: 'right',
+    padding: 0,
+    marginBottom: -0.028
   },
-  transactionExchange: {
-    flex: 1,
-    fontSize: 4,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center'
+  listItemBottom: {
+    textAlign: 'right',
+    padding: 0,
+    marginTop: -0.01
+  },
+  container_numberValues: {
+    width: .8,
+  },
+  text_numberValues: {
+    textAlign: 'left'
   }
 })
 
