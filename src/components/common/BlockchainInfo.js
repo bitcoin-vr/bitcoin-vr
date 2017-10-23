@@ -28,7 +28,6 @@ class BlockchainInfo extends React.Component {
     return (
       <View style={{
         flexDirection: 'row',
-        padding: 0.02,
         alignItems: 'stretch',
       }}>
         <View style={{

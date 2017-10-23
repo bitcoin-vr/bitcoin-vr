@@ -47,59 +47,81 @@ class InfoPanel extends React.Component {
 
       }}>
 
-      <View style={{
-        padding: 0.05,
-        width: 2.5,
-        flexDirection: 'row',
-      }}>
         <View style={{
-          width: 1,
-          paddingLeft: 0.05
+          width: 2.5,
+          flexDirection: 'row',
         }}>
-          <Text style={{
-            textAlign: 'left',
-            fontSize: .15,
+          <View style={{
+            width: 1,
+            paddingLeft: 0.1,
+            marginBottom: -0.05
           }}>
-            Blockchain-VR
-          </Text>
+            <Text style={{
+              textAlign: 'left',
+              fontSize: .15,
+            }}>
+              Blockchain-VR
+            </Text>
+          </View>
+
+          <View style={{
+            alignItems: 'flex-end',
+            width: 1.4,
+            marginBottom: -0.05
+          }}>
+            <View style={{
+              marginTop: 0.01,
+              marginBottom: -0.03
+            }}>
+              <Text style={{
+                textAlign: 'right',
+                fontSize: 0.08,
+              }}>
+                {`Balloon < 1 BTC`}
+              </Text>
+            </View>
+            <View style={{
+              marginBottom: 0.05
+            }}>
+              <Text style={{
+                textAlign: 'right',
+                fontSize: 0.08,
+              }}>
+                {`Zeppelin >= 1 BTC`}
+              </Text>
+            </View>
+          </View>
         </View>
-        
+
         <View style={{
-          alignItems: 'flex-end'
+          alignItems: 'center',
         }}>
-          <Text style={{
-            textAlign: 'right',
-            width: 1.2,
-          }}>
-            {`Balloon < 1 BTC\nZeppelin >= 1 BTC`}
-          </Text>
+          <BlockchainInfo />
         </View>
-      </View>
+
         <View style={{
-          alignItems: 'center'
+          marginRight: 0.05,
         }}>
-        <BlockchainInfo />
-        </View>
-        <View style={{
-          paddingRight: 0.05,
-          paddingBottom: 0.05
-        }}>
-          <Text style={{
-            textAlign: 'right',
-            textAlignVertical: 'bottom',
-            fontSize: 0.08,
-            paddingBottom: -0.03
+          <View style={{
+            marginBottom: -0.03
           }}>
-            {`Created by Daniel Ong, Robin Wilson, Jing Jia`}
-          </Text>
-          <Text style={{
-            textAlign: 'right',
-            textAlignVertical: 'bottom',
-            fontSize: 0.08,
-            paddingTop: -0.01
+            <Text style={{
+              textAlign: 'right',
+              fontSize: 0.08,
+            }}>
+              {`Created by Daniel Ong, Robin Wilson, Jing Jia`}
+            </Text>
+          </View>
+          <View style={{
+            marginBottom: 0.05
           }}>
-            {`github.com/data-VR/blockchain-vr`}
-          </Text>
+            <Text style={{
+              textAlign: 'right',
+              fontSize: 0.08,
+            }}>
+              {`github.com/data-VR/blockchain-vr`}
+            </Text>
+          </View>
         </View>
       </View>
     )
