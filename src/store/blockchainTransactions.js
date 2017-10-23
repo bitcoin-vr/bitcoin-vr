@@ -11,7 +11,10 @@ const ADD_NEW_TRANSACTION = 'ADD_NEW_TRANSACTION'
  */
 const initialState = {
   count: 0,
-  transactions: []
+  transactions: [],
+  largest: [0,0], // currency, usd
+  total: [0,0], // currency, usd
+  last: [0,0] // currency, usd
 }
 
 
@@ -27,6 +30,7 @@ export function loadTransactionsIntoState() {
   return function thunk(dispatch) {
     let socket = io.connect('http://socket.coincap.io', { jsonp: false })
     socket.on('trades', (tradeMsg) => {
+      console.log("New Transaction", tradeMsg.trade.data);
       if (tradeMsg.coin == 'BTC') dispatch(addNewTransaction(tradeMsg.trade.data))
       // dispatch(addNewTransaction(tradeMsg.trade.data))
     })
@@ -40,7 +44,8 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_NEW_TRANSACTION:
       console.log(action.newTransaction)
-      const transactionSize = action.newTransaction.volume
+      const transactionSize = +action.newTransaction.volume
+      const transactionUSD = +(+action.newTransaction.price * +transactionSize).toFixed(2);
 
       // Positioning of new transaction
       let randomX = Math.floor(Math.random() * (200)) + -100;
@@ -50,8 +55,11 @@ export default function (state = initialState, action) {
       // action.newTransaction.z = Math.random() > 0.5 ? randomZ : -randomZ
       action.newTransaction.z = -randomZ
 
+
       // Generate key
       action.newTransaction.key = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 0)) + 0;
+
+
 
       // Scale of the transaction
       switch (true) {
@@ -79,16 +87,30 @@ export default function (state = initialState, action) {
           break;
       }
 
-      // Keeps the maximum number of transactions at 100 for performance
+      //Set our counters
+      const curLargest = [
+        +state.largest[0] < +transactionSize ? transactionSize : +state.largest[0],
+        +state.largest[1] < +transactionUSD ? transactionUSD : +state.largest[1]
+      ]
+      const curTotal = [ +state.total[0] + +transactionSize, +state.total[1] + +transactionUSD ];
+      const curLast = [ transactionSize, transactionUSD ];
+
+      // Keeps the maximum number of transactions at 200 for performance
       if (state.count > 200) {
         return {
           count: state.count,
-          transactions: [...state.transactions.slice(1), action.newTransaction]
+          transactions: [...state.transactions.slice(1), action.newTransaction],
+          largest: curLargest,
+          total: curTotal,
+          last: curLast
         }
       } else {
         return {
           count: state.count += 1,
-          transactions: [...state.transactions, action.newTransaction]
+          transactions: [...state.transactions, action.newTransaction],
+          largest: curLargest,
+          total: curTotal,
+          last: curLast
         }
       }
 

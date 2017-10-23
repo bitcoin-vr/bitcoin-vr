@@ -10,6 +10,8 @@ import {
 
 import { connect } from 'react-redux';
 
+import BlockchainInfo from './BlockchainInfo.js'
+
 // Layout props
 const _panelHeight = 30
 const _panelWidth = 60;
@@ -37,7 +39,7 @@ class InfoPanel extends React.Component {
         flexDirection: 'row',
         position: 'absolute',
         transform: [
-          { translate: [0, 0, -2] },
+          { translate: [-1.5, 0, -2] },
           { rotateX: -20 }
         ]
       }} >
@@ -63,24 +65,21 @@ class InfoPanel extends React.Component {
         <View style={{
           backgroundColor: 'black',
           padding: 0.02,
-          width: 2,
+          width: 3,
           height: 0.8
         }}>
           <Text>
             Blockchain-VR
           </Text>
 
+          <BlockchainInfo />
+
           <Text style={{
             textAlign: 'right',
-            textAlignVertical: 'bottom'
+            textAlignVertical: 'bottom',
+            fontSize: 0.08
           }}>
-            Thank you @ @ @
-          </Text>
-          <Text style={{
-            textAlign: 'right',
-            textAlignVertical: 'bottom'
-          }}>
-            Thank you @ @ @
+            {`Created by Daniel Ong, Robin Wilson, Jing Jia \n github.com/data-VR/blockchain-vr`}
           </Text>
         </View>
       </View>
