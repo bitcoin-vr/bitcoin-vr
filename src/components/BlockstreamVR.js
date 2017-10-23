@@ -48,7 +48,9 @@ class BlockstreamVR extends Component {
           }}
         />
         <InfoPanel />
-        <View>
+        <View style={{
+          position: 'absolute'
+        }}>
           {
             this.props.blockchainTransactions 
             && this.props.blockchainTransactions.map( (transaction, index) => {

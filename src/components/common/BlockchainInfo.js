@@ -21,7 +21,7 @@ class BlockchainInfo extends React.Component {
 
   render() {
     const curCurrency = 'BTC'
-    const curSymbol = 'B'
+    //const curSymbol = 'B'
     const { largest, total, last } = this.props;
     console.log(this.props.largest);
 
@@ -30,31 +30,31 @@ class BlockchainInfo extends React.Component {
         flexDirection: 'row',
         padding: 0.02,
         alignItems: 'stretch',
-        margin: 0.03
       }}>
         <View style={{
-          width: 0.8,
-          backgroundColor: 'red'
+          width: 0.4,
+          flexDirection: 'column',
+          padding: 0,
+          paddingRight: 0.05,
+          
         }}>
-          <Text style={{
-            textAlign: 'left',
-          }}>
-            {`Balloon < 1 ${curCurrency} \n Zeppelin > 1 ${curCurrency}`}
-          </Text>
+          <Text style={{textAlign: 'right', padding: 0, marginBottom: -0.028}}>Total</Text>
+          <Text style={{textAlign: 'right', padding: 0, marginBottom: -0.028 }}>Largest</Text>
+          <Text style={{textAlign: 'right', padding: 0, marginTop: -0.01}}>Newest</Text>
         </View>
-        <View style={{
-          width: 1.2,
-          backgroundColor: 'red'
-        }}>
-          <Text style={{
-            textAlign: 'left',
-          }}>
-            {`Total ${curSymbol} ${total[0].toFixed(3)}\nLargest ${curSymbol} ${largest[0].toFixed(3)}\nNewest ${curSymbol} ${last[0].toFixed(3)} `}
-          </Text>
-        </View>
+
         <View style={{
           width: .8,
-          backgroundColor: 'red'
+        }}>
+          <Text style={{
+            textAlign: 'left',
+          }}>
+            {`${curCurrency} ${total[0].toFixed(3)}\n ${curCurrency} ${largest[0].toFixed(3)}\n ${curCurrency} ${last[0].toFixed(3)}`}
+          </Text>
+        </View>
+
+        <View style={{
+          width: .8,
         }}>
           <Text style={{
             textAlign: 'left',

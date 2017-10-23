@@ -36,50 +36,69 @@ class InfoPanel extends React.Component {
 
     return (
       <View style={{
-        flexDirection: 'row',
         position: 'absolute',
         transform: [
-          { translate: [-1.5, 0, -2] },
-          { rotateX: -20 }
-        ]
-      }} >
+          { translate: [-1.25, -0.5, -2] },
+          { rotateX: -25 }
+        ],
+        borderWidth: 0.01,
+        borderColor: '#FFFFFF80',
+        backgroundColor: '#000000CC',
 
-        <View
-          style={{
-            flexDirection: 'column',
-          }} >
-          <VrButton style={styles.currencyButton}>
-            <Text>BTC</Text>
-          </VrButton>
-          <VrButton style={styles.currencyButton}>
-            <Text>ETC</Text>
-          </VrButton>
-          <VrButton style={styles.currencyButton}>
-            <Text>LTC</Text>
-          </VrButton>
-          <VrButton style={styles.currencyButton}>
-            <Text>ZEC</Text>
-          </VrButton>
-        </View>
+      }}>
 
+      <View style={{
+        padding: 0.05,
+        width: 2.5,
+        flexDirection: 'row',
+      }}>
         <View style={{
-          backgroundColor: 'black',
-          padding: 0.02,
-          width: 3,
-          height: 0.8
+          width: 1,
+          paddingLeft: 0.05
         }}>
-          <Text>
+          <Text style={{
+            textAlign: 'left',
+            fontSize: .15,
+          }}>
             Blockchain-VR
           </Text>
-
-          <BlockchainInfo />
-
+        </View>
+        
+        <View style={{
+          alignItems: 'flex-end'
+        }}>
+          <Text style={{
+            textAlign: 'right',
+            width: 1.2,
+          }}>
+            {`Balloon < 1 BTC\nZeppelin >= 1 BTC`}
+          </Text>
+        </View>
+      </View>
+        <View style={{
+          alignItems: 'center'
+        }}>
+        <BlockchainInfo />
+        </View>
+        <View style={{
+          paddingRight: 0.05,
+          paddingBottom: 0.05
+        }}>
           <Text style={{
             textAlign: 'right',
             textAlignVertical: 'bottom',
-            fontSize: 0.08
+            fontSize: 0.08,
+            paddingBottom: -0.03
           }}>
-            {`Created by Daniel Ong, Robin Wilson, Jing Jia \n github.com/data-VR/blockchain-vr`}
+            {`Created by Daniel Ong, Robin Wilson, Jing Jia`}
+          </Text>
+          <Text style={{
+            textAlign: 'right',
+            textAlignVertical: 'bottom',
+            fontSize: 0.08,
+            paddingTop: -0.01
+          }}>
+            {`github.com/data-VR/blockchain-vr`}
           </Text>
         </View>
       </View>
