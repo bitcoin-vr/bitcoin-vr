@@ -7,7 +7,7 @@ import {
   asset,
   Text
 } from 'react-vr';
-import { DataReadout } from './DataReadout'
+import { HoverBox } from './HoverBox'
 
 class HotAirBalloon extends React.Component {
   constructor(props) {
@@ -88,7 +88,7 @@ class HotAirBalloon extends React.Component {
           }}
         />
         {
-          this.state.readoutVisible && volume && <DataReadout readout={{
+          this.state.readoutVisible && volume && <HoverBox readout={{
             boxSize: base * scale || 30,
             x,
             y: this.state.y,

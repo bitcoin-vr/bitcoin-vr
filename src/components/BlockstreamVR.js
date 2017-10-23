@@ -4,23 +4,20 @@ import {
   Pano,
   Text,
   View,
-  Box,
-  Animated,
   Scene,
   Plane,
-  AmbientLight,
+  //AmbientLight,
   PointLight
 } from 'react-vr';
-import io from 'socket.io-client'
+
 // React-redux and store methods
 import { connect } from 'react-redux'
+import io from 'socket.io-client';
 import { 
-  loadDatapointsIntoState, 
-  loadAxisIntoState, 
   loadTransactionsIntoState 
 } from '../store';
 // Common components
-import { TransactionObj, Cube, MovingCube } from './common';
+import { TransactionObj } from './common';
 
 class BlockstreamVR extends Component {
   constructor (props) {
@@ -28,8 +25,6 @@ class BlockstreamVR extends Component {
   }
 
   componentDidMount () {
-    // TODO: datapoints below is just a scaffold to load mock data in
-    // TODO: we should move it into a redux thunk for datapoints
     this.props.loadTransactionsIntoState()
   }
 

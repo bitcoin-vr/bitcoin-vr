@@ -7,7 +7,6 @@ import {
   asset,
   Text
 } from 'react-vr';
-import { DataReadout } from './DataReadout';
 import { Zeppelin, HotAirBalloon } from './index';
 
 class TransactionObj extends React.Component {

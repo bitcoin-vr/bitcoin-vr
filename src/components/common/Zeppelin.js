@@ -7,7 +7,7 @@ import {
   asset,
   Text
 } from 'react-vr';
-import { DataReadout } from './DataReadout'
+import { HoverBox } from './HoverBox'
 
 class Zeppelin extends React.Component {
   constructor(props) {
@@ -31,8 +31,8 @@ class Zeppelin extends React.Component {
     Animated.timing(
       this.state.y,
       {
-        toValue: 100,
-        duration: 800000
+        toValue: 1000,
+        duration: 400000
       }
     ).start()
   }
@@ -57,14 +57,14 @@ toggleReadoutVisible() {
 render() {
   const { x, z, volume, color, scale } = this.props.transaction;
   const base = 5;
-
+  console.log(this.props.transaction);
   return (
     <Animated.View
       onEnter={() => this.toggleReadoutVisible()}
       onExit={() => this.toggleReadoutVisible()}
       style={{
         transform: [
-          { translate: [x, 0, z] },
+          { translate: [x, -10, z] },
           { translateY: this.state.y },
           { rotateY: this.state.rotation}
         ]
@@ -104,7 +104,7 @@ render() {
         }}
       />
       {
-        this.state.readoutVisible && volume && <DataReadout readout={{
+        this.state.readoutVisible && volume && <HoverBox readout={{
           boxSize: base * scale || 30,
           x,
           y: this.state.y,

@@ -7,19 +7,17 @@
     "bundle": "node node_modules/react-vr/scripts/bundle.js",
     "open": "node -e \"require('xopen')('http://localhost:8081/vr/')\"",
     "devtools": "react-devtools",
-    "test": "jest",
-    "loader": "babel ./src/Converter.js | node"
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "d3": "^4.11.0",
     "lodash": "^4.17.4",
     "ovrui": "~1.4.0",
     "react": "~15.4.1",
     "react-addons-perf": "^15.4.2",
     "react-native": "~0.42.0",
     "react-native-axios": "^0.17.1",
-    "react-native-router-flux": "^4.0.0-beta.21",
+    "react-native-router-flux": "^4.0.0-beta.22",
     "react-redux": "^5.0.6",
     "react-vr": "~1.4.0",
     "react-vr-web": "~1.4.0",
