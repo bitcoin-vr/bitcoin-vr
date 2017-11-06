@@ -10,11 +10,11 @@ import {
 // React-redux and store methods
 import { connect } from 'react-redux'
 import io from 'socket.io-client';
-import { 
-  loadTransactionsIntoState 
+import {
+  loadTransactionsIntoState
 } from '../store';
 // Common components
-import { TransactionObj } from './common';
+import { TransactionObj, PanoLoader } from './common';
 import { InfoPanel } from './common/InfoPanel.js'
 
 class BlockstreamVR extends Component {
@@ -23,10 +23,12 @@ class BlockstreamVR extends Component {
   }
 
   componentDidMount () {
+    console.log("loaded App");
     this.props.loadTransactionsIntoState();
   }
 
   render() {
+    console.log("started App");
     return (
       <Scene style= {{
         transform: [
@@ -34,8 +36,12 @@ class BlockstreamVR extends Component {
         ]
       }}>
       <View>
-        <Pano source={asset('lake-large.jpg')}/>
-        <PointLight 
+        <PanoLoader />
+        {/* <Pano style={{
+          tintColor: '#7ec0ee'
+        }}
+        source={asset('lake-large.jpg')}/> */}
+        <PointLight
           style={{
             color: 'white',
             transform: [
@@ -46,16 +52,16 @@ class BlockstreamVR extends Component {
         <InfoPanel />
         <View style={{ position: 'absolute' }}>
           {
-            this.props.blockchainTransactions 
+            this.props.blockchainTransactions
             && this.props.blockchainTransactions.map( (transaction, index) => {
               return (
-                <TransactionObj 
-                  key={transaction.key} 
-                  transaction={{...transaction}} 
+                <TransactionObj
+                  key={transaction.key}
+                  transaction={{...transaction}}
                 />
               );
             })
-          } 
+          }
         </View>
       </View>
     </Scene>
