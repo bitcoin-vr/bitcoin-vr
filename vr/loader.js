@@ -5,10 +5,19 @@
 
 // ran after React-VR is loaded
 const removeLoader =  () => {
-    var body = document.getElementById("loader-id");
+    var loaderId = document.getElementById("loader-id");
     var loaderWrapper = document.getElementById("loader-wrapper");
+    console.log('Added FADE!');
 
-    var garbage = body.removeChild(loaderWrapper);
+    loaderId.className += "fade";
+    setTimeout(() => {
+      console.log('Hello blockchain!');
+    }, 5000);
+
+    //loaderId.addEventListener("fade", , false);
+
+
+    //var garbage = loaderId.removeChild(loaderWrapper);
 
     // var element = document.getElementById("loader-wrapper");
     // if(element) {
