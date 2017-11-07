@@ -57,7 +57,6 @@ toggleReadoutVisible() {
 render() {
   const { x, z, volume, color, scale } = this.props.transaction;
   const base = 5;
-  console.log(this.props.transaction);
   return (
     <Animated.View
       onEnter={() => this.toggleReadoutVisible()}

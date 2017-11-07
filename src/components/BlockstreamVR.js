@@ -2,22 +2,20 @@ import React, { Component } from 'react';
 import {
   asset,
   Pano,
-  Text,
   View,
   Scene,
-  Plane,
-  //AmbientLight,
   PointLight
 } from 'react-vr';
 
 // React-redux and store methods
 import { connect } from 'react-redux'
 import io from 'socket.io-client';
-import { 
-  loadTransactionsIntoState 
+import {
+  loadTransactionsIntoState
 } from '../store';
 // Common components
-import { TransactionObj } from './common';
+import { TransactionObj, PanoLoader } from './common';
+import { InfoPanel } from './common/InfoPanel.js'
 
 class BlockstreamVR extends Component {
   constructor (props) {
@@ -25,20 +23,19 @@ class BlockstreamVR extends Component {
   }
 
   componentDidMount () {
-    this.props.loadTransactionsIntoState()
+    this.props.loadTransactionsIntoState();
   }
 
   render() {
     return (
       <Scene style= {{
         transform: [
-          {translate: [0, 0, 0]},
-          //{rotateZ: 45}
+          {translate: [0, 0, 0]}
         ]
       }}>
       <View>
-        <Pano source={asset('lake-large.jpg')}/>
-        <PointLight 
+        <PanoLoader />
+        <PointLight
           style={{
             color: 'white',
             transform: [
@@ -46,18 +43,19 @@ class BlockstreamVR extends Component {
             ]
           }}
         />
-        <View>
+        <InfoPanel />
+        <View style={{ position: 'absolute' }}>
           {
-            this.props.blockchainTransactions 
+            this.props.blockchainTransactions
             && this.props.blockchainTransactions.map( (transaction, index) => {
               return (
-                <TransactionObj 
-                  key={transaction.key} 
-                  transaction={{...transaction}} 
+                <TransactionObj
+                  key={transaction.key}
+                  transaction={{...transaction}}
                 />
               );
             })
-          } 
+          }
         </View>
       </View>
     </Scene>
@@ -79,5 +77,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlockstreamVR)
+export default connect(mapStateToProps, mapDispatchToProps)(BlockstreamVR);

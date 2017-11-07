@@ -1,13 +1,24 @@
 <html>
   <head>
     <title>dataVR</title>
-    <style>body { margin: 0; }</style>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   </head>
   <body>
+    <link rel="stylesheet" href="styles.css">
+    <div id="loader-id">
+      <div id="loader-wrapper">
+        <h2 id="loader-text">Loading blockchain-VR...</h2>
+        <div id="loader"></div>
+      </div>
+    </div>
+
     <!-- When you're ready to deploy your app, update this line to point to your compiled client.bundle.js -->
+
     <script src="./client.bundle?platform=vr"></script>
+    <script src="./loader.js"></script>
     <script>
+      uniquelyNamedGlobalVariableUsedToRemoveReactVRLoader.removeLoader();
       // Initialize the React VR application
       ReactVR.init(
         // When you're ready to deploy your app, update this line to point to

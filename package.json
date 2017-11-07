@@ -15,6 +15,7 @@
     "ovrui": "~1.4.0",
     "react": "~15.4.1",
     "react-addons-perf": "^15.4.2",
+    "react-dom": "^16.0.0",
     "react-native": "~0.42.0",
     "react-native-axios": "^0.17.1",
     "react-native-router-flux": "^4.0.0-beta.22",
@@ -24,7 +25,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "socket.io-client": "^2.0.3",
+    "socket.io-client": "^2.0.4",
     "three": "^0.80.1"
   },
   "devDependencies": {
