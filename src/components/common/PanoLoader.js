@@ -10,27 +10,21 @@ class PanoLoader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      opacity: new Animated.Value(0),
+      opacityBlurry: new Animated.Value(0),
+      opacityLake: new Animated.Value(0),
+      isBlurryLoaded: false,
+      isLakeLoaded: false
     }
-    this.onLoad = this.onLoad.bind(this);
-    this.onThumbnailLoad = this.onThumbnailLoad.bind(this);
+    this.onBlurryLoad = this.onBlurryLoad.bind(this);
+    this.onLakeLoad = this.onLakeLoad.bind(this);
   }
 
-  onLoad() {
-    console.log("loaded blurry");
-    Animated.timing(
-      this.state.opacity,
-      {
-        toValue: 0,
-        duration: 250
-      }
-    ).start();
-  }
+  onBlurryLoad() {
+    this.setState({ isBlurryLoaded: true });
 
-  onThumbnailLoad() {
-    console.log("loaded full");
+    console.log("fade-in blurry");
     Animated.timing(
-      this.state.opacity,
+      this.state.opacityBlurry,
       {
         toValue: 1,
         duration: 250
@@ -38,25 +32,54 @@ class PanoLoader extends React.Component {
     ).start();
   }
 
+  onLakeLoad() {
+    console.log("fade-out blurry");
+    this.setState({ isLakeLoaded: true });
+    // Animated.timing(
+    //   this.state.opacity,
+    //   {
+    //     toValue: 0,
+    //     duration: 250
+    //   }
+    // ).start();
+
+
+    Animated.parallel([
+      Animated.timing(this.state.opacityBlurry, {
+        toValue: 0,    // return to start
+        duration: 250
+      }),
+      Animated.timing(this.state.opacityLake, {   // and twirl
+        toValue: 1,
+        duration: 250
+      }),
+    ]).start();
+  }
+
+  // blue => blue + blurry => blurry => blurry + large => large
   render() {
+    const { isBlurryLoaded, isLakeLoaded, opacityBlurry, opacityLake } = this.state;
     return (
       <View>
         <Animated.View
           style={{
-            opacity: this.state.opacity
+            opacity: 1
           }}>
           <Pano
-            onLoad={this.onLoad()}
+            style={{
+              opacity: 0.2
+            }}
+            onLoad={() => this.onBlurryLoad()}
             source={asset('lake-blurred.jpg')} />
         </Animated.View>
-        <Animated.View
+        {/* <Animated.View
           style={{
-            opacity: this.state.opacity
+            opacity: opacityLake
           }}>
           <Pano
-            onLoad={this.onThumbnailLoad()}
+            onLoad={() => this.onLakeLoad()}
             source={asset('lake-large.jpg')} />
-        </Animated.View>
+        </Animated.View> */}
       </View>
     );
   }

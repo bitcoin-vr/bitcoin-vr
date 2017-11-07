@@ -36,6 +36,9 @@ class BlockstreamVR extends Component {
         ]
       }}>
       <View>
+      {/* <Pano
+        onLoad={() => this.onLoad()}
+        source={asset('lake-blurred.jpg')} /> */}
         <PanoLoader />
         {/* <Pano style={{
           tintColor: '#7ec0ee'
