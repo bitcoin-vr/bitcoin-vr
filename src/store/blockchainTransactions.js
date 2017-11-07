@@ -41,7 +41,7 @@ export function loadTransactionsIntoState() {
 export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_NEW_TRANSACTION:
-      //console.log(action.newTransaction)
+      //(action.newTransaction)
       const transactionSize = +action.newTransaction.volume
       const transactionUSD = +(+action.newTransaction.price * +transactionSize).toFixed(2);
 

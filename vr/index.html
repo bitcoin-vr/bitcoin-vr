@@ -7,21 +7,18 @@
   <body>
     <link rel="stylesheet" href="styles.css">
     <div id="loader-id">
-    <div id="loader-wrapper">
-      <h2 id="loader-text">Loading blockchain-VR...</h2>
-			<div id="loader"></div>
-			<div class="loader-section section-left"></div>
-      <div class="loader-section section-right"></div>
+      <div id="loader-wrapper">
+        <h2 id="loader-text">Loading blockchain-VR...</h2>
+        <div id="loader"></div>
+      </div>
     </div>
-  </div>
 
     <!-- When you're ready to deploy your app, update this line to point to your compiled client.bundle.js -->
 
     <script src="./client.bundle?platform=vr"></script>
     <script src="./loader.js"></script>
     <script>
-      removeLoader();
-      console.log("before React init");
+      uniquelyNamedGlobalVariableUsedToRemoveReactVRLoader.removeLoader();
       // Initialize the React VR application
       ReactVR.init(
         // When you're ready to deploy your app, update this line to point to

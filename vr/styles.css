@@ -1,5 +1,4 @@
-
-/* code from https://ihatetomatoes.net/create-custom-preloading-screen/ */
+/* loader code adapted from https://ihatetomatoes.net/create-custom-preloading-screen/ */
 
 body {
   background-color: #000;
@@ -43,11 +42,6 @@ body {
   z-index: 1001;
 }
 
-.fade-out {
-  -webkit-animation: fade 2s ease 1;
-  animation: fade 2s ease 1;
-}
-
 @-webkit-keyframes spin {
   0%   {
       -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
@@ -71,6 +65,11 @@ body {
       -ms-transform: rotate(360deg);  /* IE 9 */
       transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
   }
+}
+
+.fade-out {
+  -webkit-animation: fade 2s ease 1;
+  animation: fade 2s ease 1;
 }
 
 @-webkit-keyframes fade {

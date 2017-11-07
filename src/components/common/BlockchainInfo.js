@@ -22,7 +22,6 @@ class BlockchainInfo extends React.Component {
   render() {
     const curCurrency = 'BTC'
     const { largest, total, last } = this.props;
-    console.log(this.props.largest);
 
     return (
       <View style={styles.container}>
@@ -79,7 +78,6 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     largest: state.blockchainTransactions.largest,
     total: state.blockchainTransactions.total,

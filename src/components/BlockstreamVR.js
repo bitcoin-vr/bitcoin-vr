@@ -23,12 +23,10 @@ class BlockstreamVR extends Component {
   }
 
   componentDidMount () {
-    console.log("loaded App");
     this.props.loadTransactionsIntoState();
   }
 
   render() {
-    console.log("started App");
     return (
       <Scene style= {{
         transform: [
@@ -36,14 +34,7 @@ class BlockstreamVR extends Component {
         ]
       }}>
       <View>
-      {/* <Pano
-        onLoad={() => this.onLoad()}
-        source={asset('lake-blurred.jpg')} /> */}
         <PanoLoader />
-        {/* <Pano style={{
-          tintColor: '#7ec0ee'
-        }}
-        source={asset('lake-large.jpg')}/> */}
         <PointLight
           style={{
             color: 'white',
