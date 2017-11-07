@@ -58,22 +58,22 @@ class PanoLoader extends React.Component {
           (!isBlurryLoaded || !isLakeLoaded )
           && (
             <View style={{ opacity: 0 }}>
-              <Image
+              <Pano
                 source={asset('lake-blurred.jpg')}
-                style={{ width: 0, height: 0 }} onLoad={() => this.onBlurryLoad()} />
-              <Image
+                style={{ renderGroup: false, tintColor: '#000' }} onLoad={() => this.onBlurryLoad()} />
+              <Pano
                 source={asset('lake-medium.jpg')}
-                style={{ width: 0, height: 0 }} onLoad={() => this.onLakeLoad()} />
+                style={{ renderGroup: false, tintColor: '#000' }} onLoad={() => this.onLakeLoad()} />
             </View>
           )
         }
         {
           isBlurryLoaded && !isLakeLoaded && <Pano
-            source={asset('lake-blurred.jpg')} />
+            style={{ zIndex: 4 }} source={asset('lake-blurred.jpg')} />
         }
         {
           isLakeLoaded && <Pano
-            source={asset('lake-medium.jpg')} />
+            style={{ zIndex: 10 }} source={asset('lake-medium.jpg')} />
         }
         {/* <Animated.View
           style={{
