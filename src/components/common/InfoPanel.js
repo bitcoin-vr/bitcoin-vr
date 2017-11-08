@@ -1,11 +1,8 @@
 import React from 'react';
 import {
-  Box,
-  Animated,
   Text,
   View,
   StyleSheet,
-  VrButton
 } from 'react-vr';
 
 import { connect } from 'react-redux';
@@ -16,58 +13,52 @@ import BlockchainInfo from './BlockchainInfo.js'
 const _panelHeight = 30
 const _panelWidth = 60;
 
-class InfoPanel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+function InfoPanel(props) {
 
-  render() {
+  return (
+    <View style={styles.container}>
+      <View style={styles.container_header}>
 
-    return (
-      <View style={styles.container}>
-        <View style={styles.container_header}>
-
-          <View style={styles.container_title}>
-            <Text style={styles.text_title}>
-              Blockchain-VR
+        <View style={styles.container_title}>
+          <Text style={styles.text_title}>
+            Blockchain-VR
             </Text>
-          </View>
-
-          <View style={styles.container_key}>
-            <View style={styles.container_keyItem}>
-              <Text style={styles.text_smallRightAlign}>
-                {`Balloon < 1 BTC`}
-              </Text>
-            </View>
-            <View style={styles.container_keyItemBottom}>
-              <Text style={styles.text_smallRightAlign}>
-                {`Zeppelin >= 1 BTC`}
-              </Text>
-            </View>
-          </View>
-
         </View>
 
-        <View style={{ alignItems: 'center' }}>
-          <BlockchainInfo />
-        </View>
-
-        <View style={styles.container_footer}>
+        <View style={styles.container_key}>
           <View style={styles.container_keyItem}>
             <Text style={styles.text_smallRightAlign}>
-              {`Created by Daniel Ong, Robin Wilson, Jing Jia`}
+              {`Balloon < 1 BTC`}
             </Text>
           </View>
           <View style={styles.container_keyItemBottom}>
             <Text style={styles.text_smallRightAlign}>
-              {`github.com/data-VR/blockchain-vr`}
+              {`Zeppelin >= 1 BTC`}
             </Text>
           </View>
         </View>
 
       </View>
-    )
-  }
+
+      <View style={{ alignItems: 'center' }}>
+        <BlockchainInfo />
+      </View>
+
+      <View style={styles.container_footer}>
+        <View style={styles.container_keyItem}>
+          <Text style={styles.text_smallRightAlign}>
+            {`Created by Daniel Ong, Robin Wilson, Jing Jia`}
+          </Text>
+        </View>
+        <View style={styles.container_keyItemBottom}>
+          <Text style={styles.text_smallRightAlign}>
+            {`github.com/data-VR/blockchain-vr`}
+          </Text>
+        </View>
+      </View>
+
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
