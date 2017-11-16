@@ -118,27 +118,20 @@ body {
 
   #info-text{
     position: absolute;
-    float: top;
+    width: 100%;
+    height: 100%;
     z-index:30000644;
     color: white;
-    margin: 0 auto;
-    padding: 10px;
-    text-align: center;
+    text-align: left;
+    /* vertical-align: middle;
+    align-content: center; */
+    display: inline-block;
   }
 
-
-  @media screen and (max-width: 768px) {
-    /* For desktop: */
-    .col-1 {width: 8.33%;}
-    .col-2 {width: 16.66%;}
-    .col-3 {width: 25%;}
-    .col-4 {width: 33.33%;}
-    .col-5 {width: 41.66%;}
-    .col-6 {width: 50%;}
-    .col-7 {width: 58.33%;}
-    .col-8 {width: 66.66%;}
-    .col-9 {width: 75%;}
-    .col-10 {width: 83.33%;}
-    .col-11 {width: 91.66%;}
-    .col-sm-12 {width: 100%;}
+  ul {
+    padding-top: 50%;
+    padding-bottom: 50%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
