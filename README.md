@@ -10,6 +10,10 @@ We use Waffle to manage our open issues. BitcoinVR is an open source labor of lo
 
 [https://waffle.io/data-VR/blockchain-vr](https://waffle.io/data-VR/blockchain-vr)
 
+### Research
+
+[Learning ReactVR](https://gist.github.com/onggunhao/52e5a504fbf07e9b2f332bbead7e71e3)
+[Deploying ReactVR](https://gist.github.com/onggunhao/1f6571163b4678ca56e17dc98a623c65)
 
 ## Background
 
