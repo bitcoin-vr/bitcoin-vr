@@ -15,8 +15,20 @@ We use Waffle to manage our open issues. BitcoinVR is an open source labor of lo
 [Learning ReactVR](https://gist.github.com/onggunhao/52e5a504fbf07e9b2f332bbead7e71e3)
 [Deploying ReactVR](https://gist.github.com/onggunhao/1f6571163b4678ca56e17dc98a623c65)
 
-## Background
+## Guide
 
-### ReactVR
+### Git Repository Structure
 
+Due to ReactVR's [production build process](https://facebook.github.io/react-vr/docs/publishing.html), we use two repositories to track Bitcoin VR.
+
+1. Blockchain-VR (this repository) holds the code 
+
+2. [Blockchain-VR-build](https://github.com/data-VR/blockchain-vr-build) tracks the `vr/build` folder that is `.gitignored` in the Blockchain-VR repository. This folder/repository holds the production build that is created from `npm run bundle`. 
+
+For more information on this process read the "[Publishing Your Project](https://facebook.github.io/react-vr/docs/publishing.html)" in the official ReactVR documentation.
+
+
+## Built on
+
+### Components
 BitcoinVR is built using ReactVR, socket.io, and coincap.io. 
