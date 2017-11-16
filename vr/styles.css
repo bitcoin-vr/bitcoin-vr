@@ -3,6 +3,8 @@
 body {
   background-color: #000;
   margin: 0px;
+  box-sizing: border-box;
+  font-family: "Arial", Arial, sans-serif;
 }
 
 #loader-wrapper {
@@ -95,3 +97,48 @@ body {
       width: 80%;
       max-width: 978px;
   }
+
+  #info-container{
+    float:top;
+    width:100%;
+    min-height:100px;
+    padding: 0px;
+    position: absolute;
+  }
+
+  #info-background {
+    float:top;
+    width:100%;
+    min-height: 100px;
+    background-color:#000;
+    z-index:30000;
+    opacity: .5;
+    position: absolute;
+  }
+
+  #info-text{
+    position: absolute;
+    float: top;
+    z-index:30000644;
+    color: white;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+  }
+
+
+  @media screen and (max-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-sm-12 {width: 100%;}
+}
