@@ -128,6 +128,8 @@ body {
 
   .height-full {
     min-height: 100px;
+    display: table;
+    margin: 0 auto;
   }
 
   table {
@@ -140,4 +142,12 @@ body {
 
   .flex {
     width: 120px; /* change this when screen is smaller */
+  }
+
+  .align-right {
+    text-align: right; /* change this when screen is smaller */
+  }
+
+  .align-center {
+    align-content: center; /* change this when screen is smaller */
   }
