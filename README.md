@@ -21,11 +21,11 @@ We use Waffle to manage our open issues. BitcoinVR is an open source labor of lo
 
 Due to ReactVR's [production build process](https://facebook.github.io/react-vr/docs/publishing.html), we use two repositories to track Bitcoin VR.
 
-1. Blockchain-VR (this repository) holds the code 
+1. [Blockchain-VR](https://github.com/data-VR/blockchain-vr) (this repository) holds the project's working tree. This `.gitignores` the  `vr/build` folder that holds the compiled production build.
 
-2. [Blockchain-VR-build](https://github.com/data-VR/blockchain-vr-build) tracks the `vr/build` folder that is `.gitignored` in the Blockchain-VR repository. This folder/repository holds the production build that is created from `npm run bundle`. 
+2. [Blockchain-VR-build](https://github.com/data-VR/blockchain-vr-build) tracks the compiled production build that is created from `npm run bundle`. You should `git clone` this repository into the `vr/build` folder in the Blockchain-VR working tree.
 
-For more information on this process read the "[Publishing Your Project](https://facebook.github.io/react-vr/docs/publishing.html)" in the official ReactVR documentation.
+For more information on this, please read the "[Publishing Your Project](https://facebook.github.io/react-vr/docs/publishing.html)" in the official ReactVR documentation.
 
 
 ## Built on
