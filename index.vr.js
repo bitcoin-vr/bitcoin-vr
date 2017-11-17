@@ -5,4 +5,4 @@ import {
 
 import App from './src/app'
 
-AppRegistry.registerComponent('dataVR', () => App);
+AppRegistry.registerComponent('BitcoinVR', () => App);
