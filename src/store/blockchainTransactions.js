@@ -1,6 +1,7 @@
 import axios from 'axios'
 import io from 'socket.io-client'
 
+
 /**
  * ACTION TYPES
  */
@@ -28,6 +29,14 @@ export const addNewTransaction = (newTransaction) => ({
  */
 export function loadTransactionsIntoState() {
   return function thunk(dispatch) {
+    let blockchainWS = new WebSocket('wss://ws.blockchain.info/inv')
+    blockchainWS.onopen = () => {
+      blockchainWS.send(JSON.stringify({"op":"unconfirmed_sub"}));
+    }
+    blockchainWS.onmessage = (msg) => {
+      console.log(JSON.parse(msg.data))
+    }
+    
     let socket = io.connect('http://socket.coincap.io', { jsonp: false })
     socket.on('trades', (tradeMsg) => {
       if (tradeMsg.coin == 'BTC') dispatch(addNewTransaction(tradeMsg.trade.data))
