@@ -47,14 +47,8 @@ export function loadTransactionsIntoState() {
         .then((resp) => resp.json())
         .then((msg) => {
           newTransaction.exchangeRate = msg.USD.last
-          console.log("Thunk's newTransaction: ", newTransaction)
           return dispatch(addNewTransaction(newTransaction))
         })
-
-      // let socket = io.connect('http://socket.coincap.io', { jsonp: false })
-      // socket.on('trades', (tradeMsg) => {
-      //   if (tradeMsg.coin == 'BTC') dispatch(addNewTransaction(tradeMsg.trade.data))
-      // })
     }
   }
 }
@@ -67,7 +61,7 @@ export default function (state = initialState, action) {
     case ADD_NEW_TRANSACTION: {
 
       let newTransaction = action.newTransaction
-      console.log(newTransaction)
+      newTransaction.display = {} // Holds display properties of the transaction
 
       // Gets transaction size from the Blockchain.info UTX websocket
       // Note that it is necessary to sum over all 'out' transactions to get the full sum
@@ -80,17 +74,11 @@ export default function (state = initialState, action) {
       transactionSize = amount / 100000000
       transactionUSD = +(newTransaction.exchangeRate * transactionSize).toFixed(2);
 
-      console.log("TransactionSize: ", transactionSize)
-      console.log("ExchangeRate: ", newTransaction.exchangeRate)
-      console.log("TransactionUSD: ", transactionUSD)
-
       // Calculate the new position
       let randomX = Math.floor(Math.random() * (200)) + -100;
-      newTransaction.x = Math.random() > 0.5 ? randomX : -randomX
-      newTransaction.x = randomX
+      newTransaction.display.x = Math.random() > 0.5 ? randomX : -randomX
       let randomZ = Math.floor(Math.random() * (100)) + 40;
-      newTransaction.z = Math.random() > 0.5 ? randomZ : -randomZ
-      newTransaction.z = -randomZ
+      newTransaction.display.z = Math.random() > 0.5 ? randomZ : -randomZ
 
       // Generate random key TODO: replace with more sophisticated hash
       newTransaction.key = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 0)) + 0;
@@ -98,30 +86,29 @@ export default function (state = initialState, action) {
       // Scale of the transaction
       switch (true) {
         // Hot Air Balloon
-        case (transactionSize < 1):
-          newTransaction.scale = 0.4 + (0.6 * transactionSize); // Gives it a minimum value
-          newTransaction.color = 'red'
-          newTransaction.model = 'balloon'
+        case (transactionSize < 10):
+          newTransaction.display.scale = 0.4 + (0.6 * transactionSize); // Gives it a minimum value
+          newTransaction.display.color = 'red'
+          newTransaction.display.model = 'balloon'
           break;
         // Zeppelin
-        case (1 <= transactionSize < 10):
+        case (10 <= transactionSize < 50):
           newTransaction.scale = 0.6 + (0.4 * transactionSize / 10);
-          newTransaction.color = 'orange'
-          newTransaction.model = 'zeppelin'
+          newTransaction.display.color = 'orange'
+          newTransaction.display.model = 'zeppelin'
           break;
-        case (10 <= transactionSize):
+        case (50 <= transactionSize):
           newTransaction.scale = 2;
-          newTransaction.color = 'blue'
-          newTransaction.model = 'zeppelin'
+          newTransaction.display.color = 'blue'
+          newTransaction.display.model = 'zeppelin'
           break;
         default:
           newTransaction.scale = 0.2 + (0.8 * transactionSize); // Gives it a minimum value
-          newTransaction.color = 'red'
-          newTransaction.model = 'balloon'
+          newTransaction.display.color = 'red'
+          newTransaction.display.model = 'balloon'
           break;
       }
 
-      console.log("Test for largest between ", state.largest[0], " and ", transactionSize, " WINNER: ", state.largest[0] < transactionSize ? transactionSize : state.largest[0])
       //Set our counters
       const curLargest = [
         state.largest[0] < transactionSize ? transactionSize : state.largest[0],
@@ -130,11 +117,6 @@ export default function (state = initialState, action) {
       const curTotal = [state.total[0] + transactionSize, state.total[1] + transactionUSD];
       const curLast = [transactionSize, transactionUSD];
 
-      console.log("CurLargest: ", curLargest)
-      console.log("CurTotal: ", curTotal)
-      console.log("CurLast: ", curLast)
-
-      // 
       newTransaction.transactionSize = transactionSize;
       newTransaction.transactionUSD = transactionUSD;
 
@@ -148,12 +130,8 @@ export default function (state = initialState, action) {
           last: curLast
         }
       } else {
-        console.log("Hello!!!")
-        console.log("CurLargest: ", curLargest)
-        console.log("CurTotal: ", curTotal)
-        console.log("CurLast: ", curLast)
         return {
-          count: state.count++,
+          count: state.count + 1,
           transactions: [...state.transactions, newTransaction],
           largest: curLargest,
           total: curTotal,

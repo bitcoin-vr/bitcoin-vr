@@ -15,8 +15,7 @@ class TransactionObj extends React.Component {
   }
 
   render() {
-    const { x, z, volume, color, scale, model } = this.props.transaction;
-    const base = 5;
+    const { model } = this.props.transaction.display;
     return (
       <View>
         {

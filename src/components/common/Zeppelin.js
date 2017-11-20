@@ -55,7 +55,8 @@ toggleReadoutVisible() {
 }
 
 render() {
-  const { x, z, volume, color, scale } = this.props.transaction;
+  const { x, z, color, scale } = this.props.transaction.display;
+  const { transactionSize } = this.props.transaction
   const base = 5;
   return (
     <Animated.View
@@ -84,7 +85,7 @@ render() {
           }}
         >
           <Text>
-            {volume}
+            {transactionSize}
           </Text>
         </Model>
 
@@ -103,12 +104,12 @@ render() {
         }}
       />
       {
-        this.state.readoutVisible && volume && <HoverBox readout={{
+        this.state.readoutVisible && transactionSize && <HoverBox readout={{
           boxSize: base * scale || 30,
           x,
           y: this.state.y,
           z,
-          orig: this.props.transaction
+          transaction: this.props.transaction
         }} />
       }
     </Animated.View>)

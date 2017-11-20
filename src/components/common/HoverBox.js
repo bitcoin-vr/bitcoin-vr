@@ -17,17 +17,8 @@ class HoverBox extends React.Component {
   }
 
   render() {
-    const { 
-      vrX, vrY, vrZ, 
-      orig, 
-      boxSize } = this.props.readout;
-    const { price, volume, exchange_id, market_id } = orig;
-
-    // Calculate USD value
-    // TODO: refactor this to the Redux store (instead of calculating during every re-render)
-    let usd = (volume * price);
-    usd = usd.toFixed(2);
-
+    const { exchangeRate, transactionSize, transactionUSD, hash } = this.props.readout.transaction;
+    
     return (
       <View
         billboarding={'on'}
@@ -37,21 +28,21 @@ class HoverBox extends React.Component {
           style={styles.transactionVolume}
         >
           {
-            `${volume.toFixed(3)}\n`
+            `${transactionSize.toFixed(3)}\n`
           }
         </Text>
         <Text
           style={styles.transactionValue}
         >
           {
-            `USD ${usd}\n`
+            `USD ${transactionUSD}\n`
           }
         </Text>
         <Text
-          style={styles.transactionExchange}
+          style={styles.transactionHash}
         >
           {
-            `${capitalizeFirstLetter(exchange_id)}`
+            `${hash}`
           }
         </Text>
       </View>
@@ -93,9 +84,9 @@ const styles = StyleSheet.create({
     width: _panelWidth,
     textAlign: 'center'
   },
-  transactionExchange: {
+  transactionHash: {
     flex: 1,
-    fontSize: 4,
+    fontSize: 2,
     color: 'white',
     width: _panelWidth,
     textAlign: 'center'
