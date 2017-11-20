@@ -86,10 +86,10 @@ export default function (state = initialState, action) {
 
       // Calculate the new position
       let randomX = Math.floor(Math.random() * (200)) + -100;
-      // newTransaction.x = Math.random() > 0.5 ? randomX : -randomX
+      newTransaction.x = Math.random() > 0.5 ? randomX : -randomX
       newTransaction.x = randomX
       let randomZ = Math.floor(Math.random() * (100)) + 40;
-      // newTransaction.z = Math.random() > 0.5 ? randomZ : -randomZ
+      newTransaction.z = Math.random() > 0.5 ? randomZ : -randomZ
       newTransaction.z = -randomZ
 
       // Generate random key TODO: replace with more sophisticated hash
