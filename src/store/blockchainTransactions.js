@@ -121,7 +121,7 @@ export default function (state = initialState, action) {
       newTransaction.transactionUSD = transactionUSD;
 
       // Keeps the maximum number of transactions at 200 for performance
-      if (state.count > 200) {
+      if (state.count > 50) {
         return {
           count: state.count,
           transactions: [...state.transactions.slice(1), newTransaction],
