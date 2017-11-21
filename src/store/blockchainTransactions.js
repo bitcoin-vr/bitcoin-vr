@@ -86,18 +86,26 @@ export default function (state = initialState, action) {
       // Scale of the transaction
       switch (true) {
         // Hot Air Balloon
+        case (transactionSize < 1):
+          newTransaction.display.scale = 0.3; // Gives it a minimum value
+          // newTransaction.display.scale = 0.4 + (0.6 * transactionSize); // Gives it a minimum value
+          newTransaction.display.color = 'blue'
+          newTransaction.display.model = 'balloon'
+          break;
         case (transactionSize < 10):
-          newTransaction.display.scale = 0.4 + (0.6 * transactionSize); // Gives it a minimum value
+          newTransaction.display.scale = 0.3; // Gives it a minimum value
+          // newTransaction.display.scale = 0.4 + (0.6 * transactionSize); // Gives it a minimum value
           newTransaction.display.color = 'red'
           newTransaction.display.model = 'balloon'
           break;
         // Zeppelin
-        case (10 <= transactionSize < 50):
-          newTransaction.scale = 0.6 + (0.4 * transactionSize / 10);
+        case (transactionSize < 50):
+          newTransaction.scale = 1
+          // newTransaction.scale = 0.6 + (0.4 * transactionSize / 10);
           newTransaction.display.color = 'orange'
           newTransaction.display.model = 'zeppelin'
           break;
-        case (50 <= transactionSize):
+        case (50<= transactionSize):
           newTransaction.scale = 2;
           newTransaction.display.color = 'blue'
           newTransaction.display.model = 'zeppelin'
