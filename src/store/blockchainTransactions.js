@@ -146,7 +146,7 @@ export default function (state = initialState, action) {
       let randomCoordinates = generateCoordinates(newTransaction.display.radial)
       newTransaction.display.x = randomCoordinates.x
       newTransaction.display.z = randomCoordinates.z
-      let distance = Math.sqrt(Math.pow(newTransaction.display.x, 2) + Math.pow(newTransaction.display.z, 2))
+      // let distance = Math.sqrt(Math.pow(newTransaction.display.x, 2) + Math.pow(newTransaction.display.z, 2))
       // let randomX =  FIFTH_RADIAL * Math.sin(Math.floor(Math.random() * (360)));
       // newTransaction.display.x = randomX
       // let randomZ = FIFTH_RADIAL * Math.cos(Math.floor(Math.random() * (360)));
@@ -167,7 +167,7 @@ export default function (state = initialState, action) {
       newTransaction.transactionSize = transactionSize;
       newTransaction.transactionUSD = transactionUSD;
 
-      // Keeps the maximum number of transactions at 200 for performance
+      // Keeps the maximum number of transactions at 50 for performance
       if (state.count > 50) {
         return {
           count: state.count,
