@@ -23,7 +23,7 @@ Due to ReactVR's [production build process](https://facebook.github.io/react-vr/
 
 1. [Blockchain-VR](https://github.com/data-VR/blockchain-vr) (this repository) holds the project's working tree. This `.gitignores` the  `vr/build` folder that holds the compiled production build.
 
-2. [Blockchain-VR-build](https://github.com/data-VR/blockchain-vr-build) tracks the compiled production build that is created from `npm run bundle`. You should `git clone` this repository into the `vr/build` folder in the Blockchain-VR working tree.
+2. [Blockchain-VR-build](https://github.com/data-VR/blockchain-vr-build) tracks the compiled production build that is created from `npm run bundle`. You should `git clone` this repository into the `vr/build` folder in the Blockchain-VR working tree. This git repository should have two remotes: `github` for tracking, and `heroku` for deployment.
 
 For more information on this, please read the "[Publishing Your Project](https://facebook.github.io/react-vr/docs/publishing.html)" in the official ReactVR documentation.
 
