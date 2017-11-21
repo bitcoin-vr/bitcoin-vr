@@ -1,5 +1,4 @@
 import axios from 'axios'
-import io from 'socket.io-client'
 
 /**
  * CONSTANTS
@@ -10,7 +9,6 @@ const THIRD_RADIAL = 200
 const FOURTH_RADIAL = 300
 const FIFTH_RADIAL = 400
 const SIXTH_RADIAL = 500
-
 
 /**
  * ACTION TYPES
