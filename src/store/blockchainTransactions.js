@@ -77,7 +77,7 @@ export default function (state = initialState, action) {
       // Calculate the new position
       let randomX = Math.floor(Math.random() * (200)) + -100;
       newTransaction.display.x = Math.random() > 0.5 ? randomX : -randomX
-      let randomZ = Math.floor(Math.random() * (100)) + 40;
+      let randomZ = Math.floor(Math.random() * (40)) + 100;
       newTransaction.display.z = Math.random() > 0.5 ? randomZ : -randomZ
 
       // Generate random key TODO: replace with more sophisticated hash
@@ -86,24 +86,42 @@ export default function (state = initialState, action) {
       // Scale of the transaction
       switch (true) {
         // Hot Air Balloon
+        case (transactionSize < 1):
+          newTransaction.display.scale = 0.3; // Gives it a minimum value
+          // newTransaction.display.scale = 0.4 + (0.6 * transactionSize); // Gives it a minimum value
+          newTransaction.display.color = 'blue'
+          newTransaction.display.model = 'balloon'
+          break;
         case (transactionSize < 10):
-          newTransaction.display.scale = 0.4 + (0.6 * transactionSize); // Gives it a minimum value
+          newTransaction.display.scale = 0.6; // Gives it a minimum value
+          // newTransaction.display.scale = 0.4 + (0.6 * transactionSize); // Gives it a minimum value
           newTransaction.display.color = 'red'
           newTransaction.display.model = 'balloon'
           break;
         // Zeppelin
-        case (10 <= transactionSize < 50):
-          newTransaction.scale = 0.6 + (0.4 * transactionSize / 10);
+        case (transactionSize < 50):
+          newTransaction.display.scale = 1.2
+          // newTransaction.scale = 0.6 + (0.4 * transactionSize / 10);
           newTransaction.display.color = 'orange'
+          newTransaction.display.model = 'balloon'
+          break;
+        case (transactionSize < 100):
+          newTransaction.display.scale = 1;
+          newTransaction.display.color = 'blue'
           newTransaction.display.model = 'zeppelin'
           break;
-        case (50 <= transactionSize):
-          newTransaction.scale = 2;
+        case (transactionSize < 1000):
+          newTransaction.display.scale = 2;
+          newTransaction.display.color = 'blue'
+          newTransaction.display.model = 'zeppelin'
+          break;
+        case (1000 < transactionSize):
+          newTransaction.display.scale = 3;
           newTransaction.display.color = 'blue'
           newTransaction.display.model = 'zeppelin'
           break;
         default:
-          newTransaction.scale = 0.2 + (0.8 * transactionSize); // Gives it a minimum value
+          newTransaction.display.scale = 0.2 + (0.8 * transactionSize); // Gives it a minimum value
           newTransaction.display.color = 'red'
           newTransaction.display.model = 'balloon'
           break;
