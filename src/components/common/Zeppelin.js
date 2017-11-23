@@ -14,9 +14,6 @@ class Zeppelin extends React.Component {
     super(props);
     this.state = {
       y: new Animated.Value(-10),
-      // x: new Animated.Value(props.x),
-      // xMoveTo: props.x +
-      // readoutVisible: false
       rotation: Math.floor(Math.random()*360)
     }
     this.animate = this.animate.bind(this);
@@ -36,17 +33,6 @@ class Zeppelin extends React.Component {
       }
     ).start()
   }
-
-//   animateX() {
-//     Animated.timing(
-//       this.state.y,
-//       {
-//         toValue: 100,
-//         duration: 100000
-//       }
-//     ).start()
-//   }
-// }
 
 toggleReadoutVisible() {
   this.state.readoutVisible
