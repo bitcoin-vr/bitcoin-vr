@@ -41,7 +41,7 @@ toggleReadoutVisible() {
 }
 
 render() {
-  const { x, z, color, scale } = this.props.transaction.display;
+  const { x, z, color, scale, radial } = this.props.transaction.display;
   const { transactionSize } = this.props.transaction
   const base = 5;
   return (
@@ -65,7 +65,7 @@ render() {
           color={color}
           style={{
             transform: [
-              { scale: 0.2 },
+              { scale: 0.4 },
               { translate: [0, 100, 0] }
             ]
           }}
@@ -77,24 +77,25 @@ render() {
 
       }
       {
-        // <Box
-        // lit
-        // dimWidth={base * scale || 30}
-        // dimDepth={base * scale || 30}
-        // dimHeight={base * scale || 30}
-        // style={{
-        //   transform: [
-        //     { translate: [0, -base * scale / 2 + 1, 0] },
-        //     { rotateY: this.state.rotation}
-        //   ],
-        //   color: color
-        // }}
+      //   <Box
+      //   lit
+      //   dimWidth={base * scale || 30}
+      //   dimDepth={base * scale || 30}
+      //   dimHeight={base * scale || 30}
+      //   style={{
+      //     transform: [
+      //       { translate: [0, -base * scale / 2 + 1, 0] },
+      //       { rotateY: this.state.rotation}
+      //     ],
+      //     color: color
+      //   }}
       // />
       }
      
       {
         this.state.readoutVisible && transactionSize && <HoverBox readout={{
-          boxSize: base * scale || 30,
+          radial,
+          scale,
           x,
           y: this.state.y,
           z,

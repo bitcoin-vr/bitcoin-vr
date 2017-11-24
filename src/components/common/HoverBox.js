@@ -18,28 +18,62 @@ class HoverBox extends React.Component {
 
   render() {
     const { exchangeRate, transactionSize, transactionUSD, hash } = this.props.readout.transaction;
+    const { radial, scale } = this.props.readout
+    console.log(radial)
+    console.log(scale)
     
     return (
       <View
         billboarding={'on'}
-        style={styles.container}
+        style={{
+          backgroundColor: '#00000080',
+          position: 'absolute',
+          height: radial/3,
+          width: radial/3,
+          flexDirection: 'column',
+          transform: [
+            { translate: [-radial/3/2, -radial/3/10, 0] },
+            { scale: 4 }
+          ],
+          borderRadius: 1,
+          justifyContent: 'flex-start',
+        }}
       >
         <Text
-          style={styles.transactionVolume}
+          style={{
+            flex: 2,
+            fontSize: 10,
+            color: 'white',
+            width: _panelWidth,
+            textAlign: 'center',
+            fontWeight: '400'
+          }}
         >
           {
             `${transactionSize.toFixed(3)}\n`
           }
         </Text>
         <Text
-          style={styles.transactionValue}
+          style={{
+            flex: 1,
+            fontSize: 4,
+            color: 'white',
+            width: _panelWidth,
+            textAlign: 'center'
+          }}
         >
           {
             `USD ${transactionUSD}\n`
           }
         </Text>
         <Text
-          style={styles.transactionHash}
+          style={{
+            flex: 1,
+            fontSize: 2,
+            color: 'white',
+            width: _panelWidth,
+            textAlign: 'center'
+          }}
         >
           {
             `${hash}`
@@ -56,40 +90,14 @@ function capitalizeFirstLetter(string) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#00000080',
-    position: 'absolute',
-    height: _panelHeight,
-    width: _panelWidth,
-    flexDirection: 'column',
-    transform: [
-      { translate: [-_panelWidth / 2, -_panelHeight / 10, 0] },
-      { scale: 4 }
-    ],
-    borderRadius: 1,
-    justifyContent: 'flex-start',
-  },
   transactionVolume: {
-    flex: 2,
-    fontSize: 10,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center',
-    fontWeight: '400'
+    
   },
   transactionValue: {
-    flex: 1,
-    fontSize: 4,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center'
+    
   },
   transactionHash: {
-    flex: 1,
-    fontSize: 2,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center'
+    
   }
 })
 

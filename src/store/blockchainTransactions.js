@@ -102,14 +102,14 @@ export default function (state = initialState, action) {
           newTransaction.display.radial = FIRST_RADIAL
           break;
         case (transactionSize < 10):
-          newTransaction.display.scale = 0.6; // Gives it a minimum value
+          newTransaction.display.scale = 0.8; // Gives it a minimum value
           newTransaction.display.color = 'green'
           newTransaction.display.model = 'balloon'
           newTransaction.display.radial = SECOND_RADIAL
           break;
         // Zeppelin
         case (transactionSize < 50):
-          newTransaction.display.scale = 1.2
+          newTransaction.display.scale = 1.6
           newTransaction.display.color = 'orange'
           newTransaction.display.model = 'balloon'
           newTransaction.display.radial = THIRD_RADIAL
