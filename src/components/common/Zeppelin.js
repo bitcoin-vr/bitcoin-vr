@@ -29,7 +29,7 @@ class Zeppelin extends React.Component {
       this.state.y,
       {
         toValue: 1000,
-        duration: 400000
+        duration: 100000
       }
     ).start()
   }
@@ -52,20 +52,20 @@ render() {
         transform: [
           { translate: [x, -10, z] },
           { translateY: this.state.y },
-          { rotateY: this.state.rotation}
+          // { rotateY: this.state.rotation}
         ]
       }}>
       {
         <Model
           lit
-          // texture={asset('gold_texture.jpg')}
+          texture={asset('gold_texture.jpg')}
           source={{
             obj: asset('Low-Poly_airship.obj'),
           }}
           color={color}
           style={{
             transform: [
-              { scale: 0.08 },
+              { scale: 0.2 },
               { translate: [0, 100, 0] }
             ]
           }}

@@ -30,7 +30,7 @@ class BlockstreamVR extends Component {
     return (
       <Scene style= {{
         transform: [
-          {translate: [0, 0, 0]}
+          {translate: [0, 1, 0]}
         ]
       }}>
       <View>

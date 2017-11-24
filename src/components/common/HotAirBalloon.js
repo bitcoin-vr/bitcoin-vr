@@ -29,7 +29,7 @@ class HotAirBalloon extends React.Component {
       this.state.y,
       {
         toValue: 1000,
-        duration: 200000
+        duration: 40000
       }
     ).start()
   }

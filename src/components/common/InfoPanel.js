@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     transform: [
-      { translate: [-1.25, -0.5, -2] },
+      { translate: [-1.25, 0.5, -2] },
       { rotateX: -25 }
     ],
     borderWidth: 0.01,
