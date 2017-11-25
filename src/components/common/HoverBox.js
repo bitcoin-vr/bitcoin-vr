@@ -32,7 +32,7 @@ class HoverBox extends React.Component {
           width: radial/3,
           flexDirection: 'column',
           transform: [
-            { translate: [-radial/3/2, -radial/3/10, 0] },
+            { translate: [-radial/6, -radial/30, 0] },
             { scale: 4 }
           ],
           borderRadius: 1,
@@ -42,23 +42,23 @@ class HoverBox extends React.Component {
         <Text
           style={{
             flex: 2,
-            fontSize: 10,
+            fontSize: radial/11,
             color: 'white',
-            width: _panelWidth,
+            width: radial/3,
             textAlign: 'center',
             fontWeight: '400'
           }}
         >
           {
-            `${transactionSize.toFixed(3)}\n`
+            `${transactionSize.toFixed(2)}\n`
           }
         </Text>
         <Text
           style={{
             flex: 1,
-            fontSize: 4,
+            fontSize: radial/27,
             color: 'white',
-            width: _panelWidth,
+            width: radial/3,
             textAlign: 'center'
           }}
         >
@@ -69,10 +69,10 @@ class HoverBox extends React.Component {
         <Text
           style={{
             flex: 1,
-            fontSize: 2,
+            fontSize: radial/54,
             color: 'white',
-            width: _panelWidth,
-            textAlign: 'center'
+            width: radial/3,
+            textAlign: 'center',
           }}
         >
           {
