@@ -19,8 +19,6 @@ class HoverBox extends React.Component {
   render() {
     const { exchangeRate, transactionSize, transactionUSD, hash } = this.props.readout.transaction;
     const { radial, scale } = this.props.readout
-    console.log(radial)
-    console.log(scale)
     
     return (
       <View
