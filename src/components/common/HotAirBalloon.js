@@ -41,7 +41,7 @@ class HotAirBalloon extends React.Component {
   }
 
   render() {
-    const { x, z, color, scale } = this.props.transaction.display;
+    const { x, z, color, scale, radial } = this.props.transaction.display;
     const { transactionSize } = this.props.transaction
     const base = 5;
 
@@ -90,7 +90,8 @@ class HotAirBalloon extends React.Component {
         />
         {
           this.state.readoutVisible && transactionSize && <HoverBox readout={{
-            boxSize: base * scale || 30,
+            radial,
+            scale,
             x,
             y: this.state.y,
             z,

@@ -14,9 +14,6 @@ class Zeppelin extends React.Component {
     super(props);
     this.state = {
       y: new Animated.Value(-10),
-      // x: new Animated.Value(props.x),
-      // xMoveTo: props.x +
-      // readoutVisible: false
       rotation: Math.floor(Math.random()*360)
     }
     this.animate = this.animate.bind(this);
@@ -37,17 +34,6 @@ class Zeppelin extends React.Component {
     ).start()
   }
 
-//   animateX() {
-//     Animated.timing(
-//       this.state.y,
-//       {
-//         toValue: 100,
-//         duration: 100000
-//       }
-//     ).start()
-//   }
-// }
-
 toggleReadoutVisible() {
   this.state.readoutVisible
     ? this.setState({ readoutVisible: false })
@@ -55,7 +41,7 @@ toggleReadoutVisible() {
 }
 
 render() {
-  const { x, z, color, scale } = this.props.transaction.display;
+  const { x, z, color, scale, radial } = this.props.transaction.display;
   const { transactionSize } = this.props.transaction
   const base = 5;
   return (
@@ -79,7 +65,7 @@ render() {
           color={color}
           style={{
             transform: [
-              { scale: 0.2 },
+              { scale: 0.4 },
               { translate: [0, 100, 0] }
             ]
           }}
@@ -90,22 +76,26 @@ render() {
         </Model>
 
       }
-      <Box
-        lit
-        dimWidth={base * scale || 30}
-        dimDepth={base * scale || 30}
-        dimHeight={base * scale || 30}
-        style={{
-          transform: [
-            { translate: [0, -base * scale / 2 + 1, 0] },
-            { rotateY: this.state.rotation}
-          ],
-          color: color
-        }}
-      />
+      {
+      //   <Box
+      //   lit
+      //   dimWidth={base * scale || 30}
+      //   dimDepth={base * scale || 30}
+      //   dimHeight={base * scale || 30}
+      //   style={{
+      //     transform: [
+      //       { translate: [0, -base * scale / 2 + 1, 0] },
+      //       { rotateY: this.state.rotation}
+      //     ],
+      //     color: color
+      //   }}
+      // />
+      }
+     
       {
         this.state.readoutVisible && transactionSize && <HoverBox readout={{
-          boxSize: base * scale || 30,
+          radial,
+          scale,
           x,
           y: this.state.y,
           z,
