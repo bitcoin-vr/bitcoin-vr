@@ -17,41 +17,64 @@ class HoverBox extends React.Component {
   }
 
   render() {
-    const { 
-      vrX, vrY, vrZ, 
-      orig, 
-      boxSize } = this.props.readout;
-    const { price, volume, exchange_id, market_id } = orig;
-
-    // Calculate USD value
-    // TODO: refactor this to the Redux store (instead of calculating during every re-render)
-    let usd = (volume * price);
-    usd = usd.toFixed(2);
-
+    const { exchangeRate, transactionSize, transactionUSD, hash } = this.props.readout.transaction;
+    const { radial, scale } = this.props.readout
+    
     return (
       <View
         billboarding={'on'}
-        style={styles.container}
+        style={{
+          backgroundColor: '#00000080',
+          position: 'absolute',
+          height: radial/3,
+          width: radial/3,
+          flexDirection: 'column',
+          transform: [
+            { translate: [-radial/6, -radial/30, 0] },
+            { scale: 4 }
+          ],
+          borderRadius: 1,
+          justifyContent: 'flex-start',
+        }}
       >
         <Text
-          style={styles.transactionVolume}
+          style={{
+            flex: 2,
+            fontSize: radial/11,
+            color: 'white',
+            width: radial/3,
+            textAlign: 'center',
+            fontWeight: '400'
+          }}
         >
           {
-            `${volume.toFixed(3)}\n`
+            `${transactionSize.toFixed(2)}\n`
           }
         </Text>
         <Text
-          style={styles.transactionValue}
+          style={{
+            flex: 1,
+            fontSize: radial/27,
+            color: 'white',
+            width: radial/3,
+            textAlign: 'center'
+          }}
         >
           {
-            `USD ${usd}\n`
+            `USD ${transactionUSD}\n`
           }
         </Text>
         <Text
-          style={styles.transactionExchange}
+          style={{
+            flex: 1,
+            fontSize: radial/54,
+            color: 'white',
+            width: radial/3,
+            textAlign: 'center',
+          }}
         >
           {
-            `${capitalizeFirstLetter(exchange_id)}`
+            `${hash}`
           }
         </Text>
       </View>
@@ -65,40 +88,14 @@ function capitalizeFirstLetter(string) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#00000080',
-    position: 'absolute',
-    height: _panelHeight,
-    width: _panelWidth,
-    flexDirection: 'column',
-    transform: [
-      { translate: [-_panelWidth / 2, -_panelHeight / 10, 0] },
-      { scale: 4 }
-    ],
-    borderRadius: 1,
-    justifyContent: 'flex-start',
-  },
   transactionVolume: {
-    flex: 2,
-    fontSize: 10,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center',
-    fontWeight: '400'
+    
   },
   transactionValue: {
-    flex: 1,
-    fontSize: 4,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center'
+    
   },
-  transactionExchange: {
-    flex: 1,
-    fontSize: 4,
-    color: 'white',
-    width: _panelWidth,
-    textAlign: 'center'
+  transactionHash: {
+    
   }
 })
 

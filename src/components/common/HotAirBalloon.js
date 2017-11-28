@@ -29,7 +29,7 @@ class HotAirBalloon extends React.Component {
       this.state.y,
       {
         toValue: 1000,
-        duration: 200000
+        duration: 40000
       }
     ).start()
   }
@@ -41,7 +41,8 @@ class HotAirBalloon extends React.Component {
   }
 
   render() {
-    const { x, z, volume, color, scale } = this.props.transaction;
+    const { x, z, color, scale, radial } = this.props.transaction.display;
+    const { transactionSize } = this.props.transaction
     const base = 5;
 
     return (
@@ -70,7 +71,7 @@ class HotAirBalloon extends React.Component {
             }}
           >
             <Text>
-              {volume}
+              {transactionSize}
             </Text>
           </Model>
         }
@@ -88,12 +89,13 @@ class HotAirBalloon extends React.Component {
           }}
         />
         {
-          this.state.readoutVisible && volume && <HoverBox readout={{
-            boxSize: base * scale || 30,
+          this.state.readoutVisible && transactionSize && <HoverBox readout={{
+            radial,
+            scale,
             x,
             y: this.state.y,
             z,
-            orig: this.props.transaction
+            transaction: this.props.transaction
           }} />
         }
       </Animated.View>)

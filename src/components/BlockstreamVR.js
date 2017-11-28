@@ -9,7 +9,6 @@ import {
 
 // React-redux and store methods
 import { connect } from 'react-redux'
-import io from 'socket.io-client';
 import {
   loadTransactionsIntoState
 } from '../store';
@@ -30,7 +29,7 @@ class BlockstreamVR extends Component {
     return (
       <Scene style= {{
         transform: [
-          {translate: [0, 0, 0]}
+          {translate: [0, 1, 0]}
         ]
       }}>
       <View>
