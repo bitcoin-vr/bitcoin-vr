@@ -107,7 +107,7 @@ body {
     justify-content: space-around;
   }
 
-  .info-table-container {
+  #info-table {
     font-size: 16px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -126,16 +126,16 @@ body {
     padding: 2px 4px 2px 2px;
   }
 
-  .authors {
+  #authors {
     align-self: flex-end;
     text-align: right;
     margin-bottom: 10px;
   }
 
-  .authors > p {
+  #authors > p {
     margin: 0px;
   }
-  .authors a {
+  #authors a {
     color: lightblue;
   }
 
