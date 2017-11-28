@@ -100,18 +100,19 @@ body {
   }
 
   #info-container{
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: flex-start;
-    align-items: flex-start;
     width:100%;
     min-height:100px;
     background-color:rgba(0, 0, 0, 0.5);
     padding: 0px;
     z-index: 10;
     position: absolute;
+    color: white;
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    justify-content: space-around;
   }
 
   #info-text{
@@ -119,14 +120,18 @@ body {
     width: inherit;
     height: inherit;
     z-index:30001;
-    color: white;
+
     /* display: table; */
   }
 
-  .height-full {
-    min-height: 100px;
-    display: table;
-    margin: 0 auto;
+  .info-table-container {
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  h2 {
+    margin-top: 10px;
   }
 
   table {
@@ -138,7 +143,18 @@ body {
     padding: 2px 4px 2px 2px;
   }
 
+  .authors {
+    align-self: flex-end;
+    text-align: right;
+    margin-bottom: 10px;
+  }
 
+  .authors > p {
+    margin: 0px;
+  }
+  .authors a {
+    color: lightblue;
+  }
 
   .flex {
     width: 120px; /* change this when screen is smaller */
