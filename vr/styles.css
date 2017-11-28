@@ -91,14 +91,6 @@ body {
       color: #222222;
   }
 
-
-  #content {
-      margin: 0 auto;
-      padding-bottom: 50px;
-      width: 80%;
-      max-width: 978px;
-  }
-
   #info-container{
     width:100%;
     min-height:100px;
@@ -113,15 +105,6 @@ body {
     -webkit-flex-direction: row;
     flex-direction: row;
     justify-content: space-around;
-  }
-
-  #info-text{
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    z-index:30001;
-
-    /* display: table; */
   }
 
   .info-table-container {
@@ -156,14 +139,10 @@ body {
     color: lightblue;
   }
 
-  .flex {
+  .numbers {
     width: 120px; /* change this when screen is smaller */
   }
 
   .align-right {
     text-align: right; /* change this when screen is smaller */
-  }
-
-  .align-center {
-    align-content: center; /* change this when screen is smaller */
   }
