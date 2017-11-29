@@ -75,23 +75,7 @@ render() {
           </Text>
         </Model>
 
-      }
-      {
-      //   <Box
-      //   lit
-      //   dimWidth={base * scale || 30}
-      //   dimDepth={base * scale || 30}
-      //   dimHeight={base * scale || 30}
-      //   style={{
-      //     transform: [
-      //       { translate: [0, -base * scale / 2 + 1, 0] },
-      //       { rotateY: this.state.rotation}
-      //     ],
-      //     color: color
-      //   }}
-      // />
-      }
-     
+      }     
       {
         this.state.readoutVisible && transactionSize && <HoverBox readout={{
           radial,

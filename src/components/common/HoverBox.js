@@ -79,7 +79,7 @@ class HoverBox extends React.Component {
               fontSize: radial /70,
               color: 'white',
               textAlign: 'center',
-              backgroundColor: "black",
+              backgroundColor: "fd585880",
               color: "yellowgreen",
               marginLeft: radial/50,
               marginRight: radial/50,
@@ -109,17 +109,5 @@ class HoverBox extends React.Component {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-const styles = StyleSheet.create({
-  transactionVolume: {
-
-  },
-  transactionValue: {
-
-  },
-  transactionHash: {
-
-  }
-})
 
 export { HoverBox };
