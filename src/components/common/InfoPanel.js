@@ -21,8 +21,8 @@ function InfoPanel(props) {
 
         <View style={styles.container_title}>
           <Text style={styles.text_title}>
-            Blockchain-VR
-            </Text>
+            Bitcoin-VR
+          </Text>
         </View>
 
         <View style={styles.container_key}>
@@ -58,7 +58,7 @@ function InfoPanel(props) {
       </View>
 
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
