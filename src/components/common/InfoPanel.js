@@ -52,7 +52,7 @@ function InfoPanel(props) {
         </View>
         <View style={styles.container_keyItemBottom}>
           <Text style={styles.text_smallRightAlign}>
-            {`github.com/data-VR/blockchain-vr`}
+            {`github.com/bitcoin-vr/bitcoin-vr`}
           </Text>
         </View>
       </View>

@@ -42,7 +42,7 @@ export function loadTransactionsIntoState() {
       blockchainWS.send(JSON.stringify({ "op": "unconfirmed_sub" }));
     }
     blockchainWS.onmessage = (msg) => {
-      // See annotated Blockchain.info Websocket API 
+      // See annotated Blockchain.info Websocket API
       // I have summarized it at https://gist.github.com/onggunhao/fcce0aac94ba73c44b59b4ff0dd6b638
       let newTransaction = JSON.parse(msg.data).x
 
@@ -64,7 +64,7 @@ export function loadTransactionsIntoState() {
 function generateCoordinates(radius) {
   let randomAngle = Math.random()*Math.PI*2
   return {
-    x: radius * Math.sin(randomAngle), 
+    x: radius * Math.sin(randomAngle),
     z: radius * Math.cos(randomAngle)
   }
 }
