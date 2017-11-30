@@ -79,7 +79,6 @@ class HoverBox extends React.Component {
               fontSize: radial /70,
               color: 'white',
               textAlign: 'center',
-              backgroundColor: "fd585880",
               color: "yellowgreen",
               marginLeft: radial/50,
               marginRight: radial/50,
