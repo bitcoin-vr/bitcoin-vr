@@ -12,6 +12,7 @@ import * as SimpleRaycaster from 'simple-raycaster';
     window.mobile = true;
   } else {
     // add to detect firefox nightly then mobile = true
+    console.log(navigator.userAgent || navigator.vendor || window.opera);
     window.mobile = false;
   }
 })(navigator.userAgent || navigator.vendor || window.opera);
