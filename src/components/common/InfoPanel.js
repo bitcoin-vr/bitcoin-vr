@@ -5,8 +5,6 @@ import {
   StyleSheet,
 } from 'react-vr';
 
-import { connect } from 'react-redux';
-
 import BlockchainInfo from './BlockchainInfo.js'
 
 // Layout props
