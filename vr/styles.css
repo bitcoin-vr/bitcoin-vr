@@ -109,9 +109,9 @@ body {
     -webkit-flex-direction: row;
     flex-direction: row;
     justify-content: space-around;
-    }
+  }
 
-      p {
-        margin: 5px;
-        align-self: center;
-      }
+  p {
+    margin: 5px;
+    align-self: center;
+  }
