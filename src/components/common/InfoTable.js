@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
 
-const tablePlacement = document.getElementById('info-table');
-
 function InfoTable(props) {
 
   // example format: largest = [bitcoin amount, dollar amount]
@@ -65,5 +63,5 @@ const wrapper = connect(mapState)(InfoTable);
 
 ReactDOM.render(
   wrapper,
-  tablePlacement
+  document.getElementById('info-table')
 );
