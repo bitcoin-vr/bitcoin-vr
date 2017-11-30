@@ -1,4 +1,4 @@
-uniquelyNamedGlobalVariableUsedToRemoveReactVRLoader.removeLoader();
+ReactVR.removeLoader();
 
 // remove warning ribbon if viewing on mobile
 if (document.mobile) {

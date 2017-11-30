@@ -1,8 +1,3 @@
-// Auto-generated content.
-// This file contains the boilerplate to set up your React app.
-// If you want to modify your application, start in "index.vr.js"
-
-// Auto-generated content.
 import { VRInstance } from 'react-vr-web';
 import * as SimpleRaycaster from 'simple-raycaster';
 
@@ -16,6 +11,17 @@ import * as SimpleRaycaster from 'simple-raycaster';
     window.mobile = false;
   }
 })(navigator.userAgent || navigator.vendor || window.opera);
+
+// Remove Loader function ran after React-VR is initialized
+function removeLoader() {
+  var loaderId = document.getElementById('loader-id');
+  var loaderWrapper = document.getElementById('loader-wrapper');
+
+  loaderWrapper.className += 'fade-out';
+  setTimeout(() => {
+    loaderId.removeChild(loaderWrapper);
+  }, 2000);
+};
 
 function init(bundle, parent, options) {
   const vr = new VRInstance(bundle, 'BitcoinVR', parent,
@@ -41,4 +47,4 @@ function init(bundle, parent, options) {
   return vr;
 }
 
-window.ReactVR = { init };
+window.ReactVR = { init, removeLoader };
