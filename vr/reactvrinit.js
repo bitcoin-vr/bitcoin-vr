@@ -1,4 +1,5 @@
-uniquelyNamedGlobalVariableUsedToRemoveReactVRLoader.removeLoader();
+ReactVR.removeLoader();
+
 // Initialize the React VR application
 ReactVR.init(
   // When you're ready to deploy your app, update this line to point to

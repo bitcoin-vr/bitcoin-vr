@@ -95,3 +95,23 @@ body {
       width: 80%;
       max-width: 978px;
   }
+
+  #ribbon{
+    width:100%;
+    background-color:rgba(255, 0, 0, 0.5);
+    padding: 0px;
+    z-index: 10;
+    position: absolute;
+    color: white;
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  p {
+    margin: 5px;
+    align-self: center;
+  }

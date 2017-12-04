@@ -5,8 +5,6 @@ import {
   StyleSheet,
 } from 'react-vr';
 
-import { connect } from 'react-redux';
-
 import BlockchainInfo from './BlockchainInfo.js'
 
 // Layout props
@@ -21,8 +19,8 @@ function InfoPanel(props) {
 
         <View style={styles.container_title}>
           <Text style={styles.text_title}>
-            Blockchain-VR
-            </Text>
+            Bitcoin-VR
+          </Text>
         </View>
 
         <View style={styles.container_key}>
@@ -52,13 +50,13 @@ function InfoPanel(props) {
         </View>
         <View style={styles.container_keyItemBottom}>
           <Text style={styles.text_smallRightAlign}>
-            {`github.com/data-VR/blockchain-vr`}
+            {`github.com/bitcoin-vr/bitcoin-vr`}
           </Text>
         </View>
       </View>
 
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -71,7 +69,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     transform: [
-      { translate: [-1.25, 0.5, -2] },
+      { translate: [-1.25, 4.5, -2] },
       { rotateX: -25 }
     ],
     borderWidth: 0.01,
