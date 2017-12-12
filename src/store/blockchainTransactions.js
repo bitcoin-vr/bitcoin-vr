@@ -118,23 +118,23 @@ export default function (state = initialState, action) {
           newTransaction.display.radial = THIRD_RADIAL
           break;
         case (transactionSize < 100):
-          newTransaction.display.scale = 1;
+          newTransaction.display.scale = 0.2;
           newTransaction.display.color = 'yellow'
           newTransaction.display.modelColor = '#ffffb2'
           newTransaction.display.model = 'zeppelin'
           newTransaction.display.radial = FOURTH_RADIAL
           break;
         case (transactionSize < 1000):
-          newTransaction.display.scale = 2;
-          newTransaction.display.color = 'blue'
-          newTransaction.display.modelColor = '#b2b2ff'
+          newTransaction.display.scale = 0.4;
+          newTransaction.display.color = 'grey'
+          newTransaction.display.modelColor = '#696969'
           newTransaction.display.model = 'zeppelin'
           newTransaction.display.radial = FIFTH_RADIAL
           break;
         case (1000 < transactionSize):
-          newTransaction.display.scale = 3;
-          newTransaction.display.color = 'purple'
-          newTransaction.display.modelColor = '#d8b2d8'
+          newTransaction.display.scale = 1.4;
+          newTransaction.display.color = 'grey'
+          newTransaction.display.modelColor = '#696969'
           newTransaction.display.model = 'zeppelin'
           newTransaction.display.radial = SIXTH_RADIAL
           break;
@@ -151,15 +151,6 @@ export default function (state = initialState, action) {
       let randomCoordinates = generateCoordinates(newTransaction.display.radial)
       newTransaction.display.x = randomCoordinates.x
       newTransaction.display.z = randomCoordinates.z
-      // let distance = Math.sqrt(Math.pow(newTransaction.display.x, 2) + Math.pow(newTransaction.display.z, 2))
-      // let randomX =  FIFTH_RADIAL * Math.sin(Math.floor(Math.random() * (360)));
-      // newTransaction.display.x = randomX
-      // let randomZ = FIFTH_RADIAL * Math.cos(Math.floor(Math.random() * (360)));
-      // newTransaction.display.z = randomZ
-      // console.log("Radial: ", newTransaction.display.radial)
-      // console.log("Coordinates: ", newTransaction.display.x, ", ", newTransaction.display.z)
-      // console.log("Distance: ", distance)
-      // console.log("Difference: ", newTransaction.display.radial - distance)
 
       //Set our counters
       const curLargest = [
