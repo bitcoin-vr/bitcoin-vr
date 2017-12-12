@@ -41,7 +41,7 @@ class HotAirBalloon extends React.Component {
   }
 
   render() {
-    const { x, z, color, scale, radial } = this.props.transaction.display;
+    const { x, z, color, modelColor, scale, radial } = this.props.transaction.display;
     const { transactionSize } = this.props.transaction
     const base = 5;
 
@@ -62,8 +62,9 @@ class HotAirBalloon extends React.Component {
             source={{
               obj: asset('Air_Balloon.obj'),
             }}
-            color={color}
+
             style={{
+              color: modelColor,
               transform: [
                 { scale: scale },
                 { translate: [0, 0, 0] }
