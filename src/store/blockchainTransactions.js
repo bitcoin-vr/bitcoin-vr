@@ -125,7 +125,7 @@ export default function (state = initialState, action) {
           newTransaction.display.radial = FOURTH_RADIAL
           break;
         case (transactionSize < 1000):
-          newTransaction.display.scale = 0.4;
+          newTransaction.display.scale = 0.5;
           newTransaction.display.color = 'grey'
           newTransaction.display.modelColor = '#696969'
           newTransaction.display.model = 'zeppelin'

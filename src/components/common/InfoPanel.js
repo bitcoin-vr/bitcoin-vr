@@ -45,12 +45,12 @@ function InfoPanel(props) {
       <View style={styles.container_footer}>
         <View style={styles.container_keyItem}>
           <Text style={styles.text_smallRightAlign}>
-            {`Created by Robin K Wilson, Dan`}
+            {`We are using experimental technologies that may not work on some browsers`}
           </Text>
         </View>
         <View style={styles.container_keyItemBottom}>
           <Text style={styles.text_smallRightAlign}>
-            {`github.com/bitcoin-vr/bitcoin-vr`}
+            {`Created by Robin K Wilson, Dan`}
           </Text>
         </View>
       </View>
@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
   },
   text_smallRightAlign: {
     textAlign: 'right',
-    fontSize: 0.08,
+    fontSize: 0.06,
+    marginBottom: 0.02
   },
   container_footer: {
     marginRight: 0.05,

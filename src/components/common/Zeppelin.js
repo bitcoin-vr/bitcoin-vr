@@ -52,7 +52,7 @@ render() {
         transform: [
           { translate: [x, -10, z] },
           { translateY: this.state.y },
-          { rotateY: this.state.rotation }
+          // { rotateY: this.state.rotation }
         ]
       }}>
       {
