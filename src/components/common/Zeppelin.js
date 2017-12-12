@@ -52,7 +52,7 @@ render() {
         transform: [
           { translate: [x, -10, z] },
           { translateY: this.state.y },
-          // { rotateY: this.state.rotation}
+          // { rotateY: this.state.rotation }
         ]
       }}>
       {
@@ -64,7 +64,7 @@ render() {
           style={{
             color: modelColor,
             transform: [
-              { scale: 0.4 },
+              { scale: scale },
               { translate: [0, 100, 0] }
             ]
           }}
