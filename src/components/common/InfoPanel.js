@@ -45,7 +45,7 @@ function InfoPanel(props) {
       <View style={styles.container_footer}>
         <View style={styles.container_keyItem}>
           <Text style={styles.text_smallRightAlign}>
-            {`Created by Daniel Ong, Robin Wilson, Jing Jia`}
+            {`Created by Robin K Wilson, Dan`}
           </Text>
         </View>
         <View style={styles.container_keyItemBottom}>
