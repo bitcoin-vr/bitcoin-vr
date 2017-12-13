@@ -1,5 +1,12 @@
 import { VRInstance } from 'react-vr-web';
-import * as SimpleRaycaster from 'simple-raycaster';
+// import * as SimpleRaycaster from 'simple-raycaster';
+
+const SimpleRaycaster = {
+  getType: () => "simple",
+  getRayOrigin: () => [0, 5, 0],
+  getRayDirection: () => [0, 0, -1],
+  drawsCursor: () => true
+};
 
 // Check if the user is using mobile or desktop
 // Utilized from http://detectmobilebrowsers.com/
