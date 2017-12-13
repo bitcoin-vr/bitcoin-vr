@@ -11,7 +11,7 @@ __EDIT:__ Wow! We made the front page of HackerNews! Hi everyone!
 
 Bitcoin-VR is built using [ReactVR](https://facebook.github.io/react-vr/), which allows you to build VR apps using only javascript and declarative components. We use [Blockchain.info's websocket API](https://blockchain.info/api/api_websocket) for the transaction stream, and [Redux](https://redux.js.org/docs/introduction/) for state management. 
 
-We might refactor/write tests at a later date, but code quality is generally suspect.
+We might refactor/write tests at a later date, but code quality is generally quite hacky. We also used this project to learn React/Redux so please help us find ways to improve!
 
 ## I'd like to contribute
 
