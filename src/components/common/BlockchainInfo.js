@@ -83,14 +83,3 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps)(BlockchainInfo);
 
-/* <View style={styles.container_numberValues}>
-  <Text style={styles.text_numberValues}>
-    {`${curCurrency} ${formatNumber(total[0], roundBTC)}\n ${curCurrency} ${formatNumber(largest[0], roundBTC)}\n ${curCurrency} ${formatNumber(last[0], roundBTC)}`}
-  </Text>
-</View> */
-
-/* <View style={styles.container_numberValues}>
-  <Text style={styles.text_numberValues}>
-    {`$ ${formatNumber(total[1], roundUSD)}\n $ ${formatNumber(largest[1], roundUSD)}\n $ ${formatNumber(last[1], roundUSD)}`}
-  </Text>
-</View> */
