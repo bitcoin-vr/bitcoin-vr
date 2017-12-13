@@ -26,12 +26,12 @@ function InfoPanel(props) {
         <View style={styles.container_key}>
           <View style={styles.container_keyItem}>
             <Text style={styles.text_smallRightAlign}>
-              {`Balloon < 1 BTC`}
+              {`Balloon < 50 BTC`}
             </Text>
           </View>
           <View style={styles.container_keyItemBottom}>
             <Text style={styles.text_smallRightAlign}>
-              {`Zeppelin >= 1 BTC`}
+              {`Zeppelin >= 50 BTC`}
             </Text>
           </View>
         </View>

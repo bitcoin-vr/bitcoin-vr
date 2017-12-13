@@ -23,7 +23,6 @@
     "react-vr-web": "~1.4.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "simple-raycaster": "^1.0.1",
     "three": "^0.80.1"
   },
   "devDependencies": {
