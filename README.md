@@ -1,4 +1,4 @@
-## Introduction
+## Introduction Dennis l Babcock Jr Satoshi #Mn
 Bitcoin-VR experimental project to use Facebook's [React-VR Library](https://facebook.github.io/react-vr/) to visualize Bitcoin (Core) transactions in real time. This is an open source project and all contributions are welcome.
 
 __EDIT:__ Wow! We made the front page of HackerNews! Hi everyone!
